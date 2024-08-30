@@ -1,0 +1,325 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\NurseryApp.Api.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\NurseryApp.Api.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\NurseryApp.Api.csproj",
+        "projectName": "NurseryApp.Api",
+        "projectPath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\NurseryApp.Api.csproj",
+        "packagesPath": "C:\\Users\\seidb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\seidb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Application\\NurseryApp.Application.csproj": {
+                "projectPath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Application\\NurseryApp.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "MicroElements.Swashbuckle.FluentValidation": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Application\\NurseryApp.Application.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Application\\NurseryApp.Application.csproj",
+        "projectName": "NurseryApp.Application",
+        "projectPath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Application\\NurseryApp.Application.csproj",
+        "packagesPath": "C:\\Users\\seidb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Application\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\seidb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Data\\NurseryApp.Data.csproj": {
+                "projectPath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Data\\NurseryApp.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Core\\NurseryApp.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Core\\NurseryApp.Core.csproj",
+        "projectName": "NurseryApp.Core",
+        "projectPath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Core\\NurseryApp.Core.csproj",
+        "packagesPath": "C:\\Users\\seidb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\seidb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Data\\NurseryApp.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Data\\NurseryApp.Data.csproj",
+        "projectName": "NurseryApp.Data",
+        "projectPath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Data\\NurseryApp.Data.csproj",
+        "packagesPath": "C:\\Users\\seidb\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\seidb\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Core\\NurseryApp.Core.csproj": {
+                "projectPath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Core\\NurseryApp.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

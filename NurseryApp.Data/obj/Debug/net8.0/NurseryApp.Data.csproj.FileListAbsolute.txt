@@ -1,0 +1,17 @@
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\bin\Debug\net8.0\NurseryApp.Data.deps.json
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\bin\Debug\net8.0\NurseryApp.Data.runtimeconfig.json
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\bin\Debug\net8.0\NurseryApp.Data.dll
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\bin\Debug\net8.0\NurseryApp.Data.pdb
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\NurseryApp.Data.csproj.AssemblyReference.cache
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\NurseryApp.Data.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\NurseryApp.Data.AssemblyInfoInputs.cache
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\NurseryApp.Data.AssemblyInfo.cs
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\NurseryApp.Data.csproj.CoreCompileInputs.cache
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\NurseryApp.Data.dll
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\refint\NurseryApp.Data.dll
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\NurseryApp.Data.pdb
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\NurseryApp.Data.genruntimeconfig.cache
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\ref\NurseryApp.Data.dll
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\bin\Debug\net8.0\NurseryApp.Core.dll
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\bin\Debug\net8.0\NurseryApp.Core.pdb
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\NurseryA.B9265A30.Up2Date

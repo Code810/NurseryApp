@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "tWD6mRF7atcH7xBzkJuIEFDjp1aqwVPh++aBrHEtzEc=",
+  "Source": "NurseryApp.Api",
+  "BasePath": "_content/NurseryApp.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

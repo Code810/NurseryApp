@@ -1,0 +1,17 @@
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\bin\Debug\net8.0\NurseryApp.Application.deps.json
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\bin\Debug\net8.0\NurseryApp.Application.dll
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\bin\Debug\net8.0\NurseryApp.Application.pdb
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\obj\Debug\net8.0\NurseryApp.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\obj\Debug\net8.0\NurseryApp.Application.AssemblyInfoInputs.cache
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\obj\Debug\net8.0\NurseryApp.Application.AssemblyInfo.cs
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\obj\Debug\net8.0\NurseryApp.Application.csproj.CoreCompileInputs.cache
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\obj\Debug\net8.0\NurseryApp.Application.dll
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\obj\Debug\net8.0\refint\NurseryApp.Application.dll
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\obj\Debug\net8.0\NurseryApp.Application.pdb
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\obj\Debug\net8.0\ref\NurseryApp.Application.dll
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\bin\Debug\net8.0\NurseryApp.Core.dll
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\bin\Debug\net8.0\NurseryApp.Data.dll
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\bin\Debug\net8.0\NurseryApp.Data.pdb
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\bin\Debug\net8.0\NurseryApp.Core.pdb
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\obj\Debug\net8.0\NurseryApp.Application.csproj.AssemblyReference.cache
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Application\obj\Debug\net8.0\NurseryA.D9BAB411.Up2Date
