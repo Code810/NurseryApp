@@ -1,12 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "FFaIhNW2bJA=",
+  "dgSpecHash": "Z9xlyP7wd9o=",
   "success": true,
   "projectFilePath": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\NurseryApp.Api.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\seidb\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\seidb\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\seidb\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",
-    "C:\\Users\\seidb\\.nuget\\packages\\fluentvalidation\\10.0.0\\fluentvalidation.10.0.0.nupkg.sha512",
+    "C:\\Users\\seidb\\.nuget\\packages\\fluentvalidation\\11.5.1\\fluentvalidation.11.5.1.nupkg.sha512",
+    "C:\\Users\\seidb\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\seidb\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.5.1\\fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
     "C:\\Users\\seidb\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\seidb\\.nuget\\packages\\microelements.openapi.fluentvalidation\\6.0.0\\microelements.openapi.fluentvalidation.6.0.0.nupkg.sha512",
     "C:\\Users\\seidb\\.nuget\\packages\\microelements.swashbuckle.fluentvalidation\\6.0.0\\microelements.swashbuckle.fluentvalidation.6.0.0.nupkg.sha512",

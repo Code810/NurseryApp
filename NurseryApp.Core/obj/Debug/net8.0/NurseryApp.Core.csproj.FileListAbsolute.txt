@@ -10,3 +10,4 @@ C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Core\obj\Deb
 C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Core\obj\Debug\net8.0\NurseryApp.Core.pdb
 C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Core\obj\Debug\net8.0\ref\NurseryApp.Core.dll
 C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Core\obj\Debug\net8.0\NurseryApp.Core.csproj.AssemblyReference.cache
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Core\obj\Debug\net8.0\NurseryApp.Core.sourcelink.json

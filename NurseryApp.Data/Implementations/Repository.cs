@@ -25,8 +25,11 @@ namespace NurseryApp.Data.Implementations
         {
             return await _table.FindAsync(id);
         }
-
-        public async Task<IEnumerable<TEntity>> FindAsync(Expression<Func<TEntity, bool>> predicate)
+        public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> predicate)
+        {
+            return await _table.FirstOrDefaultAsync(predicate);
+        }
+        public async Task<IEnumerable<TEntity>> FindAllAsync(Expression<Func<TEntity, bool>> predicate)
         {
             return await _table.Where(predicate).ToListAsync();
         }
@@ -58,15 +61,15 @@ namespace NurseryApp.Data.Implementations
             return await query.ToListAsync();
         }
 
-        public async Task<TEntity> GetByIdWithIncludesAsync(int id, params Expression<Func<TEntity, object>>[] includes)
+        public async Task<TEntity> GetByWithIncludesAsync(Expression<Func<TEntity, bool>> predicate, params Expression<Func<TEntity, object>>[] includes)
         {
             var query = GetAllIncludes(includes);
-            return await query.FirstOrDefaultAsync(e => EF.Property<int>(e, "Id") == id);
+            return await query.FirstOrDefaultAsync(predicate);
         }
 
         public async Task<bool> IsExist(Expression<Func<TEntity, bool>> predicate = null)
         {
-            return predicate == null ? await _table.AnyAsync() : await _table.AnyAsync(predicate);
+            return predicate == null ? false : await _table.AnyAsync(predicate);
         }
 
         public IQueryable<TEntity> GetAllIncludes(params Expression<Func<TEntity, object>>[] includes)

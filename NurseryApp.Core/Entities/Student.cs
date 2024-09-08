@@ -11,5 +11,8 @@
         public List<AttenDance> AttenDances { get; set; }
         public List<Fee> Fees { get; set; }
         public List<HomeWorkSubmission> HomeWorkSubmissions { get; set; }
+        public string FileName { get; set; }
+        public int? GroupId { get; set; }
+        public Group Group { get; set; }
     }
 }

@@ -174,6 +174,10 @@ namespace NurseryApp.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -274,7 +278,7 @@ namespace NurseryApp.Data.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime?>("PaidDate")
+                    b.Property<DateTime>("PaidDate")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("StudentId")
@@ -306,6 +310,9 @@ namespace NurseryApp.Data.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<string>("RoomNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -317,6 +324,9 @@ namespace NurseryApp.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("TeacherId")
+                        .IsUnique();
 
                     b.ToTable("Groups");
                 });
@@ -489,6 +499,10 @@ namespace NurseryApp.Data.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(15)
@@ -498,6 +512,9 @@ namespace NurseryApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(6)
                         .HasColumnType("nvarchar(6)");
+
+                    b.Property<int?>("GroupId")
+                        .HasColumnType("int");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -511,6 +528,8 @@ namespace NurseryApp.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
 
                     b.HasIndex("ParentId");
 
@@ -537,9 +556,6 @@ namespace NurseryApp.Data.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(15)
@@ -551,9 +567,6 @@ namespace NurseryApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AppUserId")
-                        .IsUnique();
-
-                    b.HasIndex("GroupId")
                         .IsUnique();
 
                     b.ToTable("Teachers");
@@ -632,6 +645,17 @@ namespace NurseryApp.Data.Migrations
                     b.Navigation("Student");
                 });
 
+            modelBuilder.Entity("NurseryApp.Core.Entities.Group", b =>
+                {
+                    b.HasOne("NurseryApp.Core.Entities.Teacher", "Teacher")
+                        .WithOne("Group")
+                        .HasForeignKey("NurseryApp.Core.Entities.Group", "TeacherId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("Teacher");
+                });
+
             modelBuilder.Entity("NurseryApp.Core.Entities.HomeWork", b =>
                 {
                     b.HasOne("NurseryApp.Core.Entities.Group", "Group")
@@ -694,11 +718,17 @@ namespace NurseryApp.Data.Migrations
 
             modelBuilder.Entity("NurseryApp.Core.Entities.Student", b =>
                 {
+                    b.HasOne("NurseryApp.Core.Entities.Group", "Group")
+                        .WithMany("Students")
+                        .HasForeignKey("GroupId");
+
                     b.HasOne("NurseryApp.Core.Entities.Parent", "Parent")
                         .WithMany("Students")
                         .HasForeignKey("ParentId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+
+                    b.Navigation("Group");
 
                     b.Navigation("Parent");
                 });
@@ -711,15 +741,7 @@ namespace NurseryApp.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("NurseryApp.Core.Entities.Group", "Group")
-                        .WithOne("Teacher")
-                        .HasForeignKey("NurseryApp.Core.Entities.Teacher", "GroupId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
-
                     b.Navigation("AppUser");
-
-                    b.Navigation("Group");
                 });
 
             modelBuilder.Entity("NurseryApp.Core.Entities.AppUser", b =>
@@ -733,8 +755,7 @@ namespace NurseryApp.Data.Migrations
                 {
                     b.Navigation("HomeWorks");
 
-                    b.Navigation("Teacher")
-                        .IsRequired();
+                    b.Navigation("Students");
                 });
 
             modelBuilder.Entity("NurseryApp.Core.Entities.HomeWork", b =>
@@ -760,6 +781,9 @@ namespace NurseryApp.Data.Migrations
 
             modelBuilder.Entity("NurseryApp.Core.Entities.Teacher", b =>
                 {
+                    b.Navigation("Group")
+                        .IsRequired();
+
                     b.Navigation("Notifications");
                 });
 #pragma warning restore 612, 618

@@ -15,3 +15,4 @@ C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Deb
 C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\bin\Debug\net8.0\NurseryApp.Core.dll
 C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\bin\Debug\net8.0\NurseryApp.Core.pdb
 C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\NurseryA.B9265A30.Up2Date
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Data\obj\Debug\net8.0\NurseryApp.Data.sourcelink.json
