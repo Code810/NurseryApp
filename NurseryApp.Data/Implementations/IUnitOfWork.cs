@@ -14,6 +14,10 @@ namespace NurseryApp.Data.Implementations
         public IStudentRepository studentRepository { get; }
         public ITeacherRepository teacherRepository { get; }
         Task<int> SaveChangesAsync();
-
+        Task BeginTransactionAsync();
+        Task CommitTransactionAsync();
+        Task RollbackTransactionAsync();
     }
+
 }
+

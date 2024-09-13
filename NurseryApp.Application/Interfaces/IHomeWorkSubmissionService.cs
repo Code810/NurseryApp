@@ -7,6 +7,7 @@ namespace NurseryApp.Application.Interfaces
         Task<int> Create(HomeWorkSubmissionCreateDto homeWorkSubmissionCreate);
         Task<int> Update(int? id, HomeWorkSubmissionUpdateDto homeWorkSubmissionUpdate);
         Task<IEnumerable<HomeWorkSubmissionReturnDto>> GetAll();
+        Task<int> Delete(int? id);
         Task<IEnumerable<HomeWorkSubmissionReturnDto>> GetAll(int? homeWorkId);
         Task<HomeWorkSubmissionReturnDto> Get(int? id);
 

@@ -148,3 +148,4 @@ C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Api\bin\Debu
 C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Api\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
 C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Api\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Api\obj\Debug\net8.0\NurseryApp.Api.sourcelink.json
+C:\Users\seidb\OneDrive\Masaüstü\NurseryApp\NurseryApp\NurseryApp.Api\bin\Debug\net8.0\NurseryApp.Api.staticwebassets.runtime.json

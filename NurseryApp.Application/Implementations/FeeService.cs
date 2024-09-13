@@ -17,26 +17,52 @@ namespace NurseryApp.Application.Implementations
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<int> Create(FeeCreateDto feeCreateDto)
+        public async Task<int> CreateFeeAndAssignToStudent(int? groupId, FeeCreateDto feeCreateDto)
         {
-            var existStudent = await _unitOfWork.studentRepository.GetAsync(s => s.Id == feeCreateDto.StudentId);
-            if (existStudent == null) throw new CustomException(404, "Not Found");
-            var lastFee = await _unitOfWork.feeRepository.GetAsync(f => f.StudentId == feeCreateDto.StudentId && f.DueDate > DateTime.Now.AddMonths(-1));
-            Fee fee = new();
-            fee.StudentId = feeCreateDto.StudentId;
-            fee.PaidDate = DateTime.Now;
-            fee.DueDate = lastFee != null ? lastFee.DueDate.AddMonths(1) : DateTime.Now.AddMonths(1);
-            fee.Amount = feeCreateDto.Amount;
-            await _unitOfWork.feeRepository.AddAsync(fee);
-            await _unitOfWork.SaveChangesAsync();
-            return fee.StudentId;
+            await _unitOfWork.BeginTransactionAsync();
+            try
+            {
+                var existStudent = await _unitOfWork.studentRepository.GetByWithIncludesAsync(
+                    s => s.Id == feeCreateDto.StudentId && !s.IsDeleted, s => s.Group);
+
+                if (existStudent == null) throw new CustomException(404, "Student Not Found");
+
+                if (existStudent.Group == null && groupId != null)
+                {
+
+                    existStudent.GroupId = groupId.Value;
+                    _unitOfWork.studentRepository.Update(existStudent);
+                    await _unitOfWork.SaveChangesAsync();
+                }
+
+                var lastFee = await _unitOfWork.feeRepository.GetLaastFeeAsync(f => f.StudentId == feeCreateDto.StudentId && !f.IsDeleted);
+
+                Fee fee = new Fee
+                {
+                    StudentId = feeCreateDto.StudentId,
+                    PaidDate = DateTime.Now,
+                    DueDate = lastFee != null ? lastFee.DueDate.AddMonths(1) : DateTime.Now.AddMonths(1),
+                    Amount = feeCreateDto.Amount
+                };
+
+                await _unitOfWork.feeRepository.AddAsync(fee);
+
+                await _unitOfWork.CommitTransactionAsync();
+
+                return fee.StudentId;
+            }
+            catch (Exception ex)
+            {
+                await _unitOfWork.RollbackTransactionAsync();
+                throw new CustomException(500, $"An error occurred: {ex.Message}");
+            }
         }
 
-        public async Task<FeeReturnDto> Get(DateTime date, int? studentId)
+
+        public async Task<FeeReturnDto> Get(int? id)
         {
-            if (studentId == null) throw new CustomException(404, "Not Found");
-            var fee = await _unitOfWork.feeRepository.GetByWithIncludesAsync(f => f.StudentId == studentId
-            && f.PaidDate.Date == date.Date, f => f.Student);
+            if (id == null) throw new CustomException(404, "Not Found");
+            var fee = await _unitOfWork.feeRepository.GetByWithIncludesAsync(f => f.Id == id && !f.IsDeleted, f => f.Student);
             if (fee == null)
                 throw new CustomException(404, "Not Found");
             var feeReturn = _mapper.Map<FeeReturnDto>(fee);
@@ -45,14 +71,14 @@ namespace NurseryApp.Application.Implementations
 
         public async Task<IEnumerable<FeeReturnDto>> GetAll()
         {
-            var fees = await _unitOfWork.feeRepository.GetAllWithIncludesAsync(f => f.Student);
+            var fees = await _unitOfWork.feeRepository.FindWithIncludesAsync(f => !f.IsDeleted, f => f.Student);
             return _mapper.Map<IEnumerable<FeeReturnDto>>(fees);
         }
 
         public async Task<IEnumerable<FeeReturnDto>> GetAll(DateTime date)
         {
             if (date == null) throw new CustomException(400, "Select date");
-            var fees = await _unitOfWork.feeRepository.FindWithIncludesAsync(f => f.PaidDate.Date == date.Date, f => f.Student);
+            var fees = await _unitOfWork.feeRepository.FindWithIncludesAsync(f => f.PaidDate.Date == date.Date && !f.IsDeleted, f => f.Student);
             if (fees.Count() == 0) throw new CustomException(400, "Empty List");
             return _mapper.Map<IEnumerable<FeeReturnDto>>(fees);
         }
@@ -60,7 +86,7 @@ namespace NurseryApp.Application.Implementations
         public async Task<IEnumerable<FeeReturnDto>> GetAll(int studentId)
         {
             if (studentId == null) throw new CustomException(400, "Not found");
-            var fees = await _unitOfWork.feeRepository.FindWithIncludesAsync(f => f.StudentId == studentId, f => f.Student);
+            var fees = await _unitOfWork.feeRepository.FindWithIncludesAsync(f => f.StudentId == studentId && !f.IsDeleted, f => f.Student);
             if (fees.Count() == 0) throw new CustomException(400, "Empty List");
             return _mapper.Map<IEnumerable<FeeReturnDto>>(fees);
         }
@@ -68,14 +94,26 @@ namespace NurseryApp.Application.Implementations
         public async Task<int> Update(int? id, FeeUpdateDto feeUpdateDto)
         {
             if (id is null) throw new CustomException(400, "Not found");
-            var fee = await _unitOfWork.feeRepository.GetAsync(f => f.Id == id);
+            var fee = await _unitOfWork.feeRepository.GetAsync(f => f.Id == id && !f.IsDeleted);
             if (fee == null) throw new CustomException(400, "Not found");
             fee.Amount = feeUpdateDto.Amount;
             fee.DueDate = feeUpdateDto.DueDate;
             _unitOfWork.feeRepository.Update(fee);
-            _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync();
             return fee.Id;
 
         }
+        public async Task<int> Delete(int? id)
+        {
+            if (id == null) throw new CustomException(400, "Fee ID cannot be null");
+
+            var fee = await _unitOfWork.feeRepository.GetAsync(f => f.Id == id && !f.IsDeleted);
+            if (fee == null) throw new CustomException(404, "Fee not found");
+            fee.IsDeleted = true;
+            _unitOfWork.feeRepository.Update(fee);
+            await _unitOfWork.SaveChangesAsync();
+            return fee.Id;
+        }
+
     }
 }

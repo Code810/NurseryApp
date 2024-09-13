@@ -1,33 +1,95 @@
-﻿using NurseryApp.Application.Dtos.ParentDto;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using NurseryApp.Application.Dtos.ParentDto;
+using NurseryApp.Application.Exceptions;
 using NurseryApp.Application.Interfaces;
+using NurseryApp.Core.Entities;
+using NurseryApp.Data.Implementations;
 
 namespace NurseryApp.Application.Implementations
 {
     public class ParentService : IParentService
     {
-        public Task<int> Create(ParentCreateDto parentCreateDto)
+        private readonly IUnitOfWork _unitOfWork;
+        private readonly IMapper _mapper;
+        private readonly UserManager<AppUser> _userManager;
+
+        public ParentService(IUnitOfWork unitOfWork, IMapper mapper, UserManager<AppUser> userManager)
         {
-            throw new NotImplementedException();
+            _unitOfWork = unitOfWork;
+            _mapper = mapper;
+            _userManager = userManager;
         }
 
-        public Task<int> Delete(int? id)
+        public async Task<int> Create(ParentCreateDto parentCreateDto)
         {
-            throw new NotImplementedException();
+            var appUser = await _userManager.Users
+        .Include(u => u.Parent)
+        .Include(u => u.Teacher)
+        .FirstOrDefaultAsync(u => u.Id == parentCreateDto.AppUserId);
+            if (appUser == null) throw new CustomException(400, "User not found");
+
+            if (appUser.Parent != null || appUser.Teacher != null) throw new CustomException(400, "User is already associated with a parent");
+
+            var parent = _mapper.Map<Parent>(parentCreateDto);
+            parent.AppUserId = parentCreateDto.AppUserId;
+
+            await _unitOfWork.parentRepository.AddAsync(parent);
+            await _unitOfWork.SaveChangesAsync();
+
+
+            return parent.Id;
         }
 
-        public Task<ParentReturnDto> Get(int? id)
+        public async Task<int> Delete(int? id)
         {
-            throw new NotImplementedException();
+            if (id == null) throw new CustomException(400, "Parent ID cannot be null");
+            var parent = await _unitOfWork.parentRepository.GetAsync(p => p.Id == id && !p.IsDeleted);
+            if (parent == null) throw new CustomException(404, "Parent not found");
+            parent.IsDeleted = true;
+            _unitOfWork.parentRepository.Update(parent);
+            await _unitOfWork.SaveChangesAsync();
+            return parent.Id;
         }
 
-        public Task<IEnumerable<ParentReturnDto>> GetAll()
+        public async Task<ParentReturnDto> Get(int? id)
         {
-            throw new NotImplementedException();
+            if (id == null) throw new CustomException(400, "Parent ID cannot be null");
+            var parent = await _unitOfWork.parentRepository.GetByWithIncludesAsync(
+                p => p.Id == id && !p.IsDeleted,
+                p => p.Students,
+                p => p.AppUser);
+
+            if (parent == null) throw new CustomException(404, "Parent not found");
+            var parentDto = _mapper.Map<ParentReturnDto>(parent);
+            return parentDto;
         }
 
-        public Task<int> Update(int? id, ParentUpdateDto parentUpdateDto)
+        public async Task<IEnumerable<ParentReturnDto>> GetAll()
         {
-            throw new NotImplementedException();
+            var parents = await _unitOfWork.parentRepository.FindWithIncludesAsync(
+                p => !p.IsDeleted,
+                p => p.Students,
+                p => p.AppUser);
+
+            var parentDtos = _mapper.Map<IEnumerable<ParentReturnDto>>(parents);
+
+            return parentDtos;
+        }
+
+        public async Task<int> Update(int? id, ParentUpdateDto parentUpdateDto)
+        {
+            if (id == null) new CustomException(404, "Parent not found");
+
+            var parent = await _unitOfWork.parentRepository.GetAsync(p => p.Id == id && !p.IsDeleted);
+            if (parent == null) throw new CustomException(404, "Parent not found");
+
+            _mapper.Map(parentUpdateDto, parent);
+            _unitOfWork.parentRepository.Update(parent);
+            await _unitOfWork.SaveChangesAsync();
+
+            return parent.Id;
         }
     }
 }

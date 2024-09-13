@@ -9,5 +9,6 @@ namespace NurseryApp.Application.Interfaces
         Task<IEnumerable<AttenDanceReturnDto>> GetAll(DateTime date);
         Task<IEnumerable<AttenDanceReturnDto>> GetAll(int studentId);
         Task<AttenDanceReturnDto> Get(DateTime date, int? studentId);
+        Task<int> Delete(int? id);
     }
 }

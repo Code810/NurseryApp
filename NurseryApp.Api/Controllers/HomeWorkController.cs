@@ -45,5 +45,11 @@ namespace NurseryApp.Api.Controllers
         {
             return Ok(await _homeWorkService.Update(id, homeWorkUpdateDto));
         }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            return Ok(await _homeWorkService.Delete(id));
+        }
     }
 }

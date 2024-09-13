@@ -15,16 +15,15 @@ namespace NurseryApp.Api.Controllers
             _feeService = feeService;
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create(FeeCreateDto feeCreateDto)
+        [HttpPost("{groupId}")]
+        public async Task<IActionResult> Create(int? groupId, FeeCreateDto feeCreateDto)
         {
-            //studentin grupu elave olunmalidir............................
-            return Ok(await _feeService.Create(feeCreateDto));
+            return Ok(await _feeService.CreateFeeAndAssignToStudent(groupId, feeCreateDto));
         }
-        [HttpGet("{date}/{studentId}")]
-        public async Task<IActionResult> Get(DateTime date, int studentId)
+        [HttpGet("by-id/{id}")]
+        public async Task<IActionResult> Get(int? id)
         {
-            return Ok(await _feeService.Get(date, studentId));
+            return Ok(await _feeService.Get(id));
         }
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -33,7 +32,7 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpGet("{value}")]
-        public async Task<IActionResult> Get(string value)
+        public async Task<IActionResult> GetByDateOrStudent(string value)
         {
             if (DateTime.TryParse(value, out DateTime date))
             {
@@ -52,6 +51,11 @@ namespace NurseryApp.Api.Controllers
         public async Task<IActionResult> Update(int id, FeeUpdateDto feeUpdateDto)
         {
             return Ok(await _feeService.Update(id, feeUpdateDto));
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            return Ok(await _feeService.Delete(id));
         }
     }
 }

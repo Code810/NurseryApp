@@ -9,6 +9,7 @@ namespace NurseryApp.Application.Interfaces
         Task<IEnumerable<HomeWorkReturnDto>> GetAll();
         Task<IEnumerable<HomeWorkReturnDto>> GetAll(int? groupId);
         Task<HomeWorkReturnDto> Get(int? id);
+        Task<int> Delete(int? id);
 
     }
 }

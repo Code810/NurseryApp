@@ -1,0 +1,25 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\06aff7a9-9a52-45d3-bbe0-18ce5885830eimages.jpeg",
+      "PackagePath": "staticwebassets\\images\\student\\06aff7a9-9a52-45d3-bbe0-18ce5885830eimages.jpeg"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.NurseryApp.Api.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.NurseryApp.Api.props",
+      "PackagePath": "build\\NurseryApp.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.NurseryApp.Api.props",
+      "PackagePath": "buildMultiTargeting\\NurseryApp.Api.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.NurseryApp.Api.props",
+      "PackagePath": "buildTransitive\\NurseryApp.Api.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

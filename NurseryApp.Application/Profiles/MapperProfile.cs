@@ -5,6 +5,9 @@ using NurseryApp.Application.Dtos.FeeDto;
 using NurseryApp.Application.Dtos.GroupDto;
 using NurseryApp.Application.Dtos.HomeWork;
 using NurseryApp.Application.Dtos.HomeWorkSubmission;
+using NurseryApp.Application.Dtos.ParentDto;
+using NurseryApp.Application.Dtos.StudentDto;
+using NurseryApp.Application.Extensions;
 using NurseryApp.Core.Entities;
 
 namespace NurseryApp.Application.Profiles
@@ -41,8 +44,15 @@ namespace NurseryApp.Application.Profiles
             CreateMap<HomeWorkSubmissionCreateDto, HomeWorkSubmission>();
             CreateMap<HomeWorkSubmission, HomeWorkSubmissionReturnDto>();
             CreateMap<HomeWorkSubmissionUpdateDto, HomeWorkSubmission>();
+            //Parent
+            CreateMap<ParentCreateDto, Parent>();
+            CreateMap<Parent, ParentReturnDto>();
+            CreateMap<ParentUpdateDto, Parent>();
 
-
+            //Student
+            CreateMap<StudentCreateDto, Student>()
+              .ForMember(s => s.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/student")));
+            CreateMap<Student, StudentReturnDto>().ForMember(d => d.FileName, map => map.MapFrom(s => url + "images/student/" + s.FileName));
 
         }
     }

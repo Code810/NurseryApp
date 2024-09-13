@@ -4,6 +4,7 @@ using MicroElements.Swashbuckle.FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using NurseryApp.Application.Dtos.StudentDto;
 using NurseryApp.Application.Implementations;
 using NurseryApp.Application.Interfaces;
 using NurseryApp.Application.Profiles;
@@ -40,7 +41,7 @@ namespace NurseryApp.Api
             });
             services.AddFluentValidationAutoValidation();
             services.AddFluentValidationClientsideAdapters();
-            //services.AddValidatorsFromAssemblyContaining<>();
+            services.AddValidatorsFromAssemblyContaining<StudentCreateDtoValidator>();
             services.AddFluentValidationRulesToSwagger();
             services.AddHttpContextAccessor();
             services.AddAutoMapper(opt => opt.AddProfile(new MapperProfile(new HttpContextAccessor())));

@@ -1,4 +1,5 @@
-﻿using NurseryApp.Core.Repositories;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using NurseryApp.Core.Repositories;
 using NurseryApp.Data.Data;
 
 namespace NurseryApp.Data.Implementations
@@ -6,6 +7,7 @@ namespace NurseryApp.Data.Implementations
     public class UnitOfWork : IUnitOfWork
     {
         private readonly NurseryAppContext _context;
+        private IDbContextTransaction _transaction;
 
         public IAttenDanceRepository attenDanceRepository { get; private set; }
         public IFeeRepository feeRepository { get; private set; }
@@ -36,15 +38,40 @@ namespace NurseryApp.Data.Implementations
 
         public async Task<int> SaveChangesAsync()
         {
+            return await _context.SaveChangesAsync();
+        }
+        public async Task BeginTransactionAsync()
+        {
+            if (_transaction != null)
+                throw new InvalidOperationException("There is already an open transaction.");
+
+            _transaction = await _context.Database.BeginTransactionAsync();
+        }
+        public async Task CommitTransactionAsync()
+        {
             try
             {
-                return await _context.SaveChangesAsync();
+                await SaveChangesAsync();
+                await _transaction.CommitAsync();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                // Log or inspect the inner exception
-                Console.WriteLine(ex.InnerException?.Message);
+                await RollbackTransactionAsync();
                 throw;
+            }
+            finally
+            {
+                await _transaction.DisposeAsync();
+                _transaction = null;
+            }
+        }
+        public async Task RollbackTransactionAsync()
+        {
+            if (_transaction != null)
+            {
+                await _transaction.RollbackAsync();
+                await _transaction.DisposeAsync();
+                _transaction = null;
             }
         }
     }

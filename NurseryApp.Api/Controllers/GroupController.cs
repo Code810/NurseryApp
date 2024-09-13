@@ -44,5 +44,10 @@ namespace NurseryApp.Api.Controllers
         {
             return Ok(await _groupService.Update(id, groupUpdateDto));
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            return Ok(await _groupService.Delete(id));
+        }
     }
 }

@@ -245,6 +245,9 @@ namespace NurseryApp.Data.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("Status")
                         .HasColumnType("bit");
 
@@ -278,6 +281,9 @@ namespace NurseryApp.Data.Migrations
                     b.Property<DateTime>("DueDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("PaidDate")
                         .HasColumnType("datetime2");
 
@@ -305,6 +311,9 @@ namespace NurseryApp.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(10)
@@ -317,7 +326,7 @@ namespace NurseryApp.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TeacherId")
+                    b.Property<int?>("TeacherId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedDate")
@@ -326,7 +335,8 @@ namespace NurseryApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("TeacherId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[TeacherId] IS NOT NULL");
 
                     b.ToTable("Groups");
                 });
@@ -351,6 +361,9 @@ namespace NurseryApp.Data.Migrations
 
                     b.Property<int>("GroupId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Title")
                         .IsRequired()
@@ -387,6 +400,9 @@ namespace NurseryApp.Data.Migrations
                     b.Property<int>("HomeWorkId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<int>("StudentId")
                         .HasColumnType("int");
 
@@ -415,6 +431,9 @@ namespace NurseryApp.Data.Migrations
 
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("Message")
                         .IsRequired()
@@ -463,6 +482,9 @@ namespace NurseryApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -516,6 +538,9 @@ namespace NurseryApp.Data.Migrations
                     b.Property<int?>("GroupId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(15)
@@ -555,6 +580,9 @@ namespace NurseryApp.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -650,8 +678,7 @@ namespace NurseryApp.Data.Migrations
                     b.HasOne("NurseryApp.Core.Entities.Teacher", "Teacher")
                         .WithOne("Group")
                         .HasForeignKey("NurseryApp.Core.Entities.Group", "TeacherId")
-                        .OnDelete(DeleteBehavior.NoAction)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Teacher");
                 });

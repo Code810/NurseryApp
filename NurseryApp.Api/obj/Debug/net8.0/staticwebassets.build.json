@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "tWD6mRF7atcH7xBzkJuIEFDjp1aqwVPh++aBrHEtzEc=",
+  "Hash": "dwgTb5rqfoVrwjzlJecSUQ90/gle+PrSg2+guDAgaig=",
   "Source": "NurseryApp.Api",
   "BasePath": "_content/NurseryApp.Api",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "NurseryApp.Api\\wwwroot",
+      "Source": "NurseryApp.Api",
+      "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
+      "BasePath": "_content/NurseryApp.Api",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\06aff7a9-9a52-45d3-bbe0-18ce5885830eimages.jpeg",
+      "SourceId": "NurseryApp.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
+      "BasePath": "_content/NurseryApp.Api",
+      "RelativePath": "images/student/06aff7a9-9a52-45d3-bbe0-18ce5885830eimages.jpeg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\student\\06aff7a9-9a52-45d3-bbe0-18ce5885830eimages.jpeg"
+    }
+  ]
 }

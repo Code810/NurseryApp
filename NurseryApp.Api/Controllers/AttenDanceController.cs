@@ -47,11 +47,11 @@ namespace NurseryApp.Api.Controllers
                 return BadRequest("Invalid parameter");
             }
         }
-    
-        //[HttpPut]
-        //public async Task<IActionResult> Update(AttenDanceUpdateDto attenDanceUpdateDto)
-        //{
-        //    return Ok(await _attenDanceService.Update(attenDanceUpdateDto));
-        //}
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            return Ok(await _attenDanceService.Delete(id));
+        }
     }
 }
