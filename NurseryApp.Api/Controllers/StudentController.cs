@@ -24,7 +24,24 @@ namespace NurseryApp.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int? id)
         {
-            return Ok();
+            return Ok(await _studentService.Get(id));
+
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            return Ok(await _studentService.Delete(id));
+        }
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            return Ok(await _studentService.GetAll());
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, StudentUpdateDto studentUpdateDto)
+        {
+            return Ok(await _studentService.Update(id, studentUpdateDto));
         }
     }
 }

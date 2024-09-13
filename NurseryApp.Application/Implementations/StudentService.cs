@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using NurseryApp.Application.Dtos.StudentDto;
 using NurseryApp.Application.Exceptions;
+using NurseryApp.Application.Helpers;
 using NurseryApp.Application.Interfaces;
 using NurseryApp.Core.Entities;
 using NurseryApp.Data.Implementations;
@@ -42,53 +43,46 @@ namespace NurseryApp.Application.Implementations
             return _mapper.Map<StudentReturnDto>(student);
         }
 
-
-
-        // Delete a student by ID
         public async Task<int> Delete(int? id)
         {
-            if (id == null)
-                throw new CustomException(400, "Student ID cannot be null");
+            if (id == null) throw new CustomException(400, "Student ID cannot be null");
 
             var student = await _unitOfWork.studentRepository.GetAsync(s => s.Id == id && !s.IsDeleted);
-            if (student == null)
-                throw new CustomException(404, "Student not found");
-
-            student.IsDeleted = true; // Mark student as deleted (soft delete)
+            if (student == null) throw new CustomException(404, "Student not found");
+            student.IsDeleted = true;
+            student.GroupId = null;
+            Helper.DeleteImage("student", student.FileName);
             _unitOfWork.studentRepository.Update(student);
             await _unitOfWork.SaveChangesAsync();
 
-            return student.Id; // Return the deleted student's ID
+            return student.Id;
         }
 
-
-
-        // Get all students
         public async Task<IEnumerable<StudentReturnDto>> GetAll()
         {
             var students = await _unitOfWork.studentRepository.FindWithIncludesAsync(
                 s => !s.IsDeleted,
-                s => s.Group, // Assuming students have groups
-                s => s.Parent); // Assuming students have parents
+                s => s.Group,
+                s => s.Parent);
 
             return _mapper.Map<IEnumerable<StudentReturnDto>>(students);
         }
 
-        // Update a student by ID
         public async Task<int> Update(int? id, StudentUpdateDto studentUpdateDto)
         {
-            if (id == null)
-                throw new CustomException(400, "Student ID cannot be null");
-
+            if (id == null) throw new CustomException(400, "Student ID cannot be null");
             var student = await _unitOfWork.studentRepository.GetAsync(s => s.Id == id && !s.IsDeleted);
-            if (student == null)
-                throw new CustomException(404, "Student not found");
-
-            _mapper.Map(studentUpdateDto, student); // Map the updated DTO to the existing student entity
+            if (student == null) throw new CustomException(404, "Student not found");
+            if (studentUpdateDto.File != null)
+            {
+                Helper.DeleteImage("student", student.FileName);
+            }
+            _mapper.Map(studentUpdateDto, student);
             _unitOfWork.studentRepository.Update(student);
             await _unitOfWork.SaveChangesAsync();
+            return student.Id;
 
-            return student.Id; // Return the updated student's ID
+
         }
     }
 

@@ -72,7 +72,7 @@ namespace NurseryApp.Application.Implementations
                 p => !p.IsDeleted,
                 p => p.Students,
                 p => p.AppUser);
-
+            if (parents.Count() <= 0) throw new CustomException(404, "Empty Parent List");
             var parentDtos = _mapper.Map<IEnumerable<ParentReturnDto>>(parents);
 
             return parentDtos;

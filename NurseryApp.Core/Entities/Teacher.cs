@@ -6,6 +6,7 @@
         public string LastName { get; set; }
         public Group Group { get; set; }
         public string AppUserId { get; set; }
+        public string FileName { get; set; }
         public AppUser AppUser { get; set; }
         public List<Notification> Notifications { get; set; }
     }
