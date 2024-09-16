@@ -174,16 +174,19 @@ namespace NurseryApp.Data.Migrations
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
 
-                    b.Property<string>("FileName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FullName")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsBlocked")
                         .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -262,6 +265,46 @@ namespace NurseryApp.Data.Migrations
                     b.HasIndex("StudentId");
 
                     b.ToTable("AttenDances");
+                });
+
+            modelBuilder.Entity("NurseryApp.Core.Entities.Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Desc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FileName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.ToTable("Blogs");
                 });
 
             modelBuilder.Entity("NurseryApp.Core.Entities.Fee", b =>
@@ -665,6 +708,17 @@ namespace NurseryApp.Data.Migrations
                     b.Navigation("Student");
                 });
 
+            modelBuilder.Entity("NurseryApp.Core.Entities.Blog", b =>
+                {
+                    b.HasOne("NurseryApp.Core.Entities.AppUser", "AppUser")
+                        .WithMany("Blogs")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("NurseryApp.Core.Entities.Fee", b =>
                 {
                     b.HasOne("NurseryApp.Core.Entities.Student", "Student")
@@ -776,6 +830,8 @@ namespace NurseryApp.Data.Migrations
 
             modelBuilder.Entity("NurseryApp.Core.Entities.AppUser", b =>
                 {
+                    b.Navigation("Blogs");
+
                     b.Navigation("Parent");
 
                     b.Navigation("Teacher");

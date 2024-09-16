@@ -31,7 +31,7 @@ namespace NurseryApp.Application.Implementations
         .FirstOrDefaultAsync(u => u.Id == teacherCreateDto.AppUserId);
             if (appUser == null) throw new CustomException(400, "User not found");
 
-            if (appUser.Parent != null || appUser.Teacher != null) throw new CustomException(400, "User is already associated with a parent");
+            if (appUser.Parent != null || appUser.Teacher != null) throw new CustomException(400, "User is already associated with a parent or teacher");
 
             var teacher = _mapper.Map<Teacher>(teacherCreateDto);
             teacher.AppUserId = teacherCreateDto.AppUserId;

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cKe81MG3tQGv73R3qjpRJGiTWDWdtgMlS083CjnkgsQ=",
+  "Hash": "7oR4t7At08QsTKhZAjD2NcVQZXkNBAP2pj5nvPxLk+E=",
   "Source": "NurseryApp.Api",
   "BasePath": "_content/NurseryApp.Api",
   "Mode": "Default",
@@ -15,5 +15,44 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\emailTemplate\\emailConfirm.html",
+      "SourceId": "NurseryApp.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
+      "BasePath": "_content/NurseryApp.Api",
+      "RelativePath": "emailTemplate/emailConfirm.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\emailTemplate\\emailConfirm.html"
+    },
+    {
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\emailTemplate\\forgotPassword.html",
+      "SourceId": "NurseryApp.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
+      "BasePath": "_content/NurseryApp.Api",
+      "RelativePath": "emailTemplate/forgotPassword.html",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\emailTemplate\\forgotPassword.html"
+    }
+  ]
 }

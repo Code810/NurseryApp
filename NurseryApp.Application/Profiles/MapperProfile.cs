@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Http;
+using NurseryApp.Application.Dtos.AppUser;
 using NurseryApp.Application.Dtos.AttenDanceDto;
 using NurseryApp.Application.Dtos.FeeDto;
 using NurseryApp.Application.Dtos.GroupDto;
@@ -63,6 +64,11 @@ namespace NurseryApp.Application.Profiles
             CreateMap<Teacher, TeacherReturnDto>().ForMember(d => d.FileName, map => map.MapFrom(t => url + "images/teacher/" + t.FileName));
             CreateMap<TeacherUpdateDto, Teacher>()
              .ForMember(t => t.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/teacher")));
+
+            //AppUser
+            CreateMap<AppUserUpdateDto, AppUser>()
+           .ForMember(dest => dest.PasswordHash, opt => opt.Ignore());
+            CreateMap<AppUser, AppUserReturnDto>();
         }
     }
 }

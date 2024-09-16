@@ -1,8 +1,12 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\bb0d9520-42a2-4781-ac6f-e1aa8760656bapple-watch_2.jpg",
-      "PackagePath": "staticwebassets\\images\\student\\bb0d9520-42a2-4781-ac6f-e1aa8760656bapple-watch_2.jpg"
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\emailTemplate\\emailConfirm.html",
+      "PackagePath": "staticwebassets\\emailTemplate\\emailConfirm.html"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\emailTemplate\\forgotPassword.html",
+      "PackagePath": "staticwebassets\\emailTemplate\\forgotPassword.html"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.NurseryApp.Api.Microsoft.AspNetCore.StaticWebAssets.props",
