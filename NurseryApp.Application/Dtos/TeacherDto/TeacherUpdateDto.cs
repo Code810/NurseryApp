@@ -7,7 +7,7 @@ namespace NurseryApp.Application.Dtos.TeacherDto
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public IFormFile File { get; set; }
+        public IFormFile? File { get; set; }
     }
     public class TeacherUpdateDtoValidator : AbstractValidator<TeacherUpdateDto>
     {

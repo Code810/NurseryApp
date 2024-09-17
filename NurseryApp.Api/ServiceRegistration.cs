@@ -86,6 +86,7 @@ namespace NurseryApp.Api
             services.AddScoped<IEmailService, EmailService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IBlogService, BlogService>();
 
             services.AddSwaggerGen(c =>
             {

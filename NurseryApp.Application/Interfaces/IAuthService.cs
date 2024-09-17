@@ -8,5 +8,7 @@ namespace NurseryApp.Application.Interfaces
         Task<int> ConfirmEmail(string email, string token);
         Task CreateRoles();
         Task<string> Login(LoginDto loginDto);
+        Task<string> ForgetPassword(string email);
+        Task<int> ResetPasswordAsync(string email, string token, ResetPasswordDto resetPasswordDto);
     }
 }

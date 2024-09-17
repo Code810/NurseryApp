@@ -68,6 +68,30 @@ namespace NurseryApp.Api.Controllers
             }
         }
 
+        [HttpPost("forget-password")]
+        public async Task<IActionResult> ForgetPassword([FromBody] string email)
+        {
+            var token = await _authService.ForgetPassword(email);
+            return Ok(token);
+        }
+
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword(string email, string token, [FromBody] ResetPasswordDto resetPasswordDto)
+        {
+            var result = await _authService.ResetPasswordAsync(email, token, resetPasswordDto);
+            return Ok(result);
+        }
+
+
+
+
+
+
+
+
+
+
+
         //[HttpPost("create-roles")]
         //public async Task<IActionResult> CreateRoles()
         //{

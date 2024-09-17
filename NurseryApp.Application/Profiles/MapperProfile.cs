@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using NurseryApp.Application.Dtos.AppUser;
 using NurseryApp.Application.Dtos.AttenDanceDto;
+using NurseryApp.Application.Dtos.Blog;
 using NurseryApp.Application.Dtos.FeeDto;
 using NurseryApp.Application.Dtos.GroupDto;
 using NurseryApp.Application.Dtos.HomeWork;
@@ -69,6 +70,13 @@ namespace NurseryApp.Application.Profiles
             CreateMap<AppUserUpdateDto, AppUser>()
            .ForMember(dest => dest.PasswordHash, opt => opt.Ignore());
             CreateMap<AppUser, AppUserReturnDto>();
+
+            //Blog
+            CreateMap<BlogCreateDto, Blog>()
+              .ForMember(b => b.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/blogs")));
+            CreateMap<Blog, BlogReturnDto>().ForMember(d => d.FileName, map => map.MapFrom(B => url + "images/blogs/" + B.FileName));
+            CreateMap<BlogUpdateDto, Blog>()
+             .ForMember(b => b.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/blogs")));
         }
     }
 }

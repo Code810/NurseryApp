@@ -3,32 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|c:\\users\\seidb\\onedrive\\masa\u00FCst\u00FC\\nurseryapp\\nurseryapp\\nurseryapp.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|solutionrelative:nurseryapp.api\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|c:\\users\\seidb\\onedrive\\masa\u00FCst\u00FC\\nurseryapp\\nurseryapp\\nurseryapp.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|solutionrelative:nurseryapp.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{99174F88-C3D0-4C5B-B871-33C37D87B6DE}|NurseryApp.Application\\NurseryApp.Application.csproj|c:\\users\\seidb\\onedrive\\masa\u00FCst\u00FC\\nurseryapp\\nurseryapp\\nurseryapp.application\\implementations\\blogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99174F88-C3D0-4C5B-B871-33C37D87B6DE}|NurseryApp.Application\\NurseryApp.Application.csproj|solutionrelative:nurseryapp.application\\implementations\\blogservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|c:\\users\\seidb\\onedrive\\masa\u00FCst\u00FC\\nurseryapp\\nurseryapp\\nurseryapp.api\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|solutionrelative:nurseryapp.api\\serviceregistration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{99174F88-C3D0-4C5B-B871-33C37D87B6DE}|NurseryApp.Application\\NurseryApp.Application.csproj|c:\\users\\seidb\\onedrive\\masa\u00FCst\u00FC\\nurseryapp\\nurseryapp\\nurseryapp.application\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{99174F88-C3D0-4C5B-B871-33C37D87B6DE}|NurseryApp.Application\\NurseryApp.Application.csproj|solutionrelative:nurseryapp.application\\implementations\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|c:\\users\\seidb\\onedrive\\masa\u00FCst\u00FC\\nurseryapp\\nurseryapp\\nurseryapp.api\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|solutionrelative:nurseryapp.api\\controllers\\blogcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|c:\\users\\seidb\\onedrive\\masa\u00FCst\u00FC\\nurseryapp\\nurseryapp\\nurseryapp.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|solutionrelative:nurseryapp.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|c:\\users\\seidb\\onedrive\\masa\u00FCst\u00FC\\nurseryapp\\nurseryapp\\nurseryapp.api\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4B92434E-5B6D-4AF5-A6B4-A762D17AD491}|NurseryApp.Api\\NurseryApp.Api.csproj|solutionrelative:nurseryapp.api\\controllers\\teachercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{99174F88-C3D0-4C5B-B871-33C37D87B6DE}|NurseryApp.Application\\NurseryApp.Application.csproj|c:\\users\\seidb\\onedrive\\masa\u00FCst\u00FC\\nurseryapp\\nurseryapp\\nurseryapp.application\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{99174F88-C3D0-4C5B-B871-33C37D87B6DE}|NurseryApp.Application\\NurseryApp.Application.csproj|solutionrelative:nurseryapp.application\\interfaces\\iauthservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{99174F88-C3D0-4C5B-B871-33C37D87B6DE}|NurseryApp.Application\\NurseryApp.Application.csproj|c:\\users\\seidb\\onedrive\\masa\u00FCst\u00FC\\nurseryapp\\nurseryapp\\nurseryapp.application\\dtos\\auth\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{99174F88-C3D0-4C5B-B871-33C37D87B6DE}|NurseryApp.Application\\NurseryApp.Application.csproj|solutionrelative:nurseryapp.application\\dtos\\auth\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{99174F88-C3D0-4C5B-B871-33C37D87B6DE}|NurseryApp.Application\\NurseryApp.Application.csproj|c:\\users\\seidb\\onedrive\\masa\u00FCst\u00FC\\nurseryapp\\nurseryapp\\nurseryapp.application\\implementations\\teacherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{99174F88-C3D0-4C5B-B871-33C37D87B6DE}|NurseryApp.Application\\NurseryApp.Application.csproj|solutionrelative:nurseryapp.application\\implementations\\teacherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -51,89 +43,67 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "NurseryApp.Api\\Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\Properties\\launchSettings.json",
-              "RelativeToolTip": "NurseryApp.Api\\Properties\\launchSettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-16T20:48:36.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "ServiceRegistration.cs",
               "DocumentMoniker": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\ServiceRegistration.cs",
               "RelativeDocumentMoniker": "NurseryApp.Api\\ServiceRegistration.cs",
               "ToolTip": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\ServiceRegistration.cs",
               "RelativeToolTip": "NurseryApp.Api\\ServiceRegistration.cs",
-              "ViewState": "AQIAAEYAAAAAAAAAAAAQwFcAAAA+AAAA",
+              "ViewState": "AQIAADcAAAAAAAAAAAAQwFgAAAA4AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T20:46:42.819Z",
+              "WhenOpened": "2024-09-17T20:45:30.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BlogController.cs",
+              "DocumentMoniker": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\Controllers\\BlogController.cs",
+              "RelativeDocumentMoniker": "NurseryApp.Api\\Controllers\\BlogController.cs",
+              "ToolTip": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\Controllers\\BlogController.cs",
+              "RelativeToolTip": "NurseryApp.Api\\Controllers\\BlogController.cs",
+              "ViewState": "AQIAABIAAAAAAAAAAAAQwCsAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T20:43:21.215Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TeacherController.cs",
+              "DocumentMoniker": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\Controllers\\TeacherController.cs",
+              "RelativeDocumentMoniker": "NurseryApp.Api\\Controllers\\TeacherController.cs",
+              "ToolTip": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\Controllers\\TeacherController.cs",
+              "RelativeToolTip": "NurseryApp.Api\\Controllers\\TeacherController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T20:43:02.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TeacherService.cs",
+              "DocumentMoniker": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Application\\Implementations\\TeacherService.cs",
+              "RelativeDocumentMoniker": "NurseryApp.Application\\Implementations\\TeacherService.cs",
+              "ToolTip": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Application\\Implementations\\TeacherService.cs",
+              "RelativeToolTip": "NurseryApp.Application\\Implementations\\TeacherService.cs",
+              "ViewState": "AQIAAEMAAAAAAAAAAAAkwGQAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T20:27:59.385Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\appsettings.json",
-              "RelativeDocumentMoniker": "NurseryApp.Api\\appsettings.json",
-              "ToolTip": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\appsettings.json",
-              "RelativeToolTip": "NurseryApp.Api\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAADAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-16T20:46:11.262Z",
+              "Title": "BlogService.cs",
+              "DocumentMoniker": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Application\\Implementations\\BlogService.cs",
+              "RelativeDocumentMoniker": "NurseryApp.Application\\Implementations\\BlogService.cs",
+              "ToolTip": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Application\\Implementations\\BlogService.cs",
+              "RelativeToolTip": "NurseryApp.Application\\Implementations\\BlogService.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAAAAABsAAAA/AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-17T20:21:02.692Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "LoginDto.cs",
-              "DocumentMoniker": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Application\\Dtos\\Auth\\LoginDto.cs",
-              "RelativeDocumentMoniker": "NurseryApp.Application\\Dtos\\Auth\\LoginDto.cs",
-              "ToolTip": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Application\\Dtos\\Auth\\LoginDto.cs",
-              "RelativeToolTip": "NurseryApp.Application\\Dtos\\Auth\\LoginDto.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T20:38:20.133Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "NurseryApp.Api\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Api\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "NurseryApp.Api\\Controllers\\AuthController.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAYwDcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-16T19:46:39.042Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Application\\Implementations\\AuthService.cs",
-              "RelativeDocumentMoniker": "NurseryApp.Application\\Implementations\\AuthService.cs",
-              "ToolTip": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Application\\Implementations\\AuthService.cs",
-              "RelativeToolTip": "NurseryApp.Application\\Implementations\\AuthService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAFgAAAA3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T20:43:23.337Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IAuthService.cs",
-              "DocumentMoniker": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Application\\Interfaces\\IAuthService.cs",
-              "RelativeDocumentMoniker": "NurseryApp.Application\\Interfaces\\IAuthService.cs",
-              "ToolTip": "C:\\Users\\seidb\\OneDrive\\Masa\u00FCst\u00FC\\NurseryApp\\NurseryApp\\NurseryApp.Application\\Interfaces\\IAuthService.cs",
-              "RelativeToolTip": "NurseryApp.Application\\Interfaces\\IAuthService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-15T20:39:43.057Z"
             }
           ]
         }

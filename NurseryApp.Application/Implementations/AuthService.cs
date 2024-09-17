@@ -13,13 +13,15 @@ namespace NurseryApp.Application.Implementations
         private readonly UserManager<AppUser> _userManager;
         private readonly IEmailService _emailService;
         private readonly ITokenService _tokenService;
+        private readonly SignInManager<AppUser> _signInManager;
 
-        public AuthService(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, IEmailService emailService, ITokenService tokenService)
+        public AuthService(RoleManager<IdentityRole> roleManager, UserManager<AppUser> userManager, IEmailService emailService, ITokenService tokenService, SignInManager<AppUser> signInManager)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _emailService = emailService;
             _tokenService = tokenService;
+            _signInManager = signInManager;
         }
 
         public async Task<int> ConfirmEmail(string email, string token)
@@ -99,6 +101,36 @@ namespace NurseryApp.Application.Implementations
             var roles = await _userManager.GetRolesAsync(existUser);
             return _tokenService.GetToken(existUser, roles);
 
+        }
+
+
+        public async Task<string> ForgetPassword(string email)
+        {
+            AppUser appUser = await _userManager.FindByEmailAsync(email);
+            if (appUser == null) throw new CustomException(400, "User not found");
+
+            var token = await _userManager.GeneratePasswordResetTokenAsync(appUser);
+
+            return token;
+        }
+
+        public async Task<int> ResetPasswordAsync(string email, string token, ResetPasswordDto resetPasswordDto)
+        {
+            if (resetPasswordDto.Password != resetPasswordDto.RePassword) throw new CustomException(400, "the password should be the same as the Repassword");
+            var appUser = await _userManager.FindByEmailAsync(email);
+            if (appUser == null)
+            {
+                throw new CustomException(400, "User not found.");
+            }
+
+            var resetResult = await _userManager.ResetPasswordAsync(appUser, token, resetPasswordDto.Password);
+            if (!resetResult.Succeeded)
+            {
+                var errors = string.Join(", ", resetResult.Errors.Select(e => e.Description));
+                throw new CustomException(400, $"Password reset failed: {errors}");
+            }
+            await _userManager.UpdateSecurityStampAsync(appUser);
+            return 1;
         }
     }
 }
