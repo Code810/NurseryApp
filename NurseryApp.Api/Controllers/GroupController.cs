@@ -35,9 +35,9 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery] int? count)
         {
-            return Ok(await _groupService.GetAll());
+            return Ok(await _groupService.GetAll(count));
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int? id, GroupUpdateDto groupUpdateDto)

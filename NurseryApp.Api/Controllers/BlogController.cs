@@ -33,9 +33,9 @@ namespace NurseryApp.Api.Controllers
             return Ok(await _blogService.Delete(id));
         }
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] int? count)
         {
-            return Ok(await _blogService.GetAll());
+            return Ok(await _blogService.GetAll(count));
         }
 
         [HttpPut("{id}")]

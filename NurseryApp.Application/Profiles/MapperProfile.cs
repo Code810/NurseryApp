@@ -2,12 +2,14 @@
 using Microsoft.AspNetCore.Http;
 using NurseryApp.Application.Dtos.AppUser;
 using NurseryApp.Application.Dtos.AttenDanceDto;
+using NurseryApp.Application.Dtos.Banner;
 using NurseryApp.Application.Dtos.Blog;
 using NurseryApp.Application.Dtos.FeeDto;
 using NurseryApp.Application.Dtos.GroupDto;
 using NurseryApp.Application.Dtos.HomeWork;
 using NurseryApp.Application.Dtos.HomeWorkSubmission;
 using NurseryApp.Application.Dtos.ParentDto;
+using NurseryApp.Application.Dtos.SettingDto;
 using NurseryApp.Application.Dtos.StudentDto;
 using NurseryApp.Application.Dtos.TeacherDto;
 using NurseryApp.Application.Extensions;
@@ -77,6 +79,68 @@ namespace NurseryApp.Application.Profiles
             CreateMap<Blog, BlogReturnDto>().ForMember(d => d.FileName, map => map.MapFrom(B => url + "images/blogs/" + B.FileName));
             CreateMap<BlogUpdateDto, Blog>()
              .ForMember(b => b.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/blogs")));
+
+            //Banner
+            CreateMap<BannerCreateDto, Banner>()
+              .ForMember(b => b.LeftFileName, map => map.MapFrom(d => d.LeftFile.Save(Directory.GetCurrentDirectory(), "images/banner")))
+              .ForMember(b => b.RightFileName, map => map.MapFrom(d => d.RightFile.Save(Directory.GetCurrentDirectory(), "images/banner")))
+              .ForMember(b => b.BottomFileName, map => map.MapFrom(d => d.BottomFile.Save(Directory.GetCurrentDirectory(), "images/banner")));
+
+            CreateMap<Banner, BannerReturnDto>()
+                .ForMember(d => d.LeftFileName, map => map.MapFrom(B => url + "images/banner/" + B.LeftFileName))
+                .ForMember(d => d.RightFileName, map => map.MapFrom(B => url + "images/banner/" + B.RightFileName))
+                .ForMember(d => d.BottomFileName, map => map.MapFrom(B => url + "images/banner/" + B.BottomFileName));
+
+
+            CreateMap<BannerUpdateDto, Banner>()
+             .ForMember(b => b.LeftFileName, map => map.MapFrom(d => d.LeftFile.Save(Directory.GetCurrentDirectory(), "images/banner")))
+             .ForMember(b => b.RightFileName, map => map.MapFrom(d => d.RightFile.Save(Directory.GetCurrentDirectory(), "images/banner")))
+             .ForMember(b => b.BottomFileName, map => map.MapFrom(d => d.BottomFile.Save(Directory.GetCurrentDirectory(), "images/banner")));
+
+            //Setting
+            CreateMap<SettingCreateDto, Settings>()
+       .ForMember(b => b.Value, map => map.MapFrom((src, dest) =>
+       {
+           if (src.Value != null && src.File == null)
+           {
+               return src.Value;
+           }
+           else if (src.File != null && src.Value == null)
+           {
+               var fileName = src.File.Save(Directory.GetCurrentDirectory(), "images/settings");
+               return fileName;
+           }
+           return dest.Value;
+       }));
+
+
+
+            CreateMap<Settings, SettingReturnDto>()
+    .ForMember(d => d.Value, map => map.MapFrom(s =>
+        (s.Value != null && (s.Value.EndsWith(".jpg") || s.Value.EndsWith(".jpeg") || s.Value.EndsWith(".png") || s.Value.EndsWith(".gif")))
+        ? $"{url}/images/settings/{s.Value}"
+        : s.Value));
+
+            CreateMap<SettingUpdateDto, Settings>()
+       .ForMember(b => b.Value, map => map.MapFrom((src, dest) =>
+       {
+           if (src.Value != null && src.File == null)
+           {
+               return src.Value;
+           }
+           else if (src.File != null && src.File.ContentType.Contains("image/"))
+           {
+               var fileName = src.File.Save(Directory.GetCurrentDirectory(), "images/settings");
+               return fileName;
+           }
+           return dest.Value;
+       }));
+
         }
+
+
+
     }
+
+
 }

@@ -74,10 +74,11 @@ namespace NurseryApp.Application.Implementations
             return teachertDto;
         }
 
-        public async Task<IEnumerable<TeacherReturnDto>> GetAll()
+        public async Task<IEnumerable<TeacherReturnDto>> GetAll(int? count)
         {
-            var teachers = await _unitOfWork.teacherRepository.FindWithIncludesAsync(
+            var teachers = await _unitOfWork.teacherRepository.GetAllAsyncWithSorting(
               t => !t.IsDeleted,
+              count,
               t => t.Group,
               t => t.AppUser);
             if (teachers.Count() <= 0) throw new CustomException(404, "Empty teacher List");

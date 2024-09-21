@@ -20,6 +20,8 @@ namespace NurseryApp.Data.Data
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Blog> Blogs { get; set; }
+        public DbSet<Banner> Banners { get; set; }
+        public DbSet<Settings> settings { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

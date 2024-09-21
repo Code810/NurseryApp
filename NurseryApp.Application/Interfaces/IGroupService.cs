@@ -7,7 +7,7 @@ namespace NurseryApp.Application.Interfaces
         Task<int> Create(GroupCreateDto groupCreateDto);
         Task<int> Update(int? id, GroupUpdateDto groupUpdateDto);
         Task<int> Delete(int? id);
-        Task<IEnumerable<GroupReturnDto>> GetAll();
+        Task<IEnumerable<GroupReturnDto>> GetAll(int? count);
         Task<GroupReturnDto> Get(string? name);
         Task<GroupReturnDto> Get(int? id);
     }

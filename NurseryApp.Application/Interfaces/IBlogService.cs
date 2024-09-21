@@ -6,7 +6,7 @@ namespace NurseryApp.Application.Interfaces
     {
         Task<int> Create(BlogCreateDto blogCreateDto);
         Task<int> Update(int? id, BlogUpdateDto blogUpdateDto);
-        Task<IEnumerable<BlogReturnDto>> GetAll();
+        Task<IEnumerable<BlogReturnDto>> GetAll(int? count);
         Task<BlogReturnDto> Get(int? id);
         Task<int> Delete(int? id);
     }

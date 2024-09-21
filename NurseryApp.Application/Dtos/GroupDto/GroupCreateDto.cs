@@ -6,5 +6,9 @@
         public string Name { get; set; }
         public string RoomNumber { get; set; }
         public int TeacherId { get; set; }
+        public int MaxAge { get; set; }
+        public int MinAge { get; set; }
+        public string Language { get; set; }
     }
 }
+

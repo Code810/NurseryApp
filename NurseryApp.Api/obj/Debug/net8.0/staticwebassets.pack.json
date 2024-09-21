@@ -9,8 +9,52 @@
       "PackagePath": "staticwebassets\\emailTemplate\\forgotPassword.html"
     },
     {
-      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\blogs\\d959cee2-8c02-4d4e-af00-19cbe5af9649apple-watch_2.jpg",
-      "PackagePath": "staticwebassets\\images\\blogs\\d959cee2-8c02-4d4e-af00-19cbe5af9649apple-watch_2.jpg"
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\banner\\2b70ae04-9f85-4c88-adce-8555b2f0a1c7bottom.png",
+      "PackagePath": "staticwebassets\\images\\banner\\2b70ae04-9f85-4c88-adce-8555b2f0a1c7bottom.png"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\banner\\632d4772-c424-4cf0-904d-142bf902b787right.png",
+      "PackagePath": "staticwebassets\\images\\banner\\632d4772-c424-4cf0-904d-142bf902b787right.png"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\banner\\79e94b38-3e76-497f-8c8e-fc5e6c93b98aleft.png",
+      "PackagePath": "staticwebassets\\images\\banner\\79e94b38-3e76-497f-8c8e-fc5e6c93b98aleft.png"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\blogs\\6030264e-a57b-4d79-9dbd-27be328ce9ffblog-2-3-DIWZrLWw.png",
+      "PackagePath": "staticwebassets\\images\\blogs\\6030264e-a57b-4d79-9dbd-27be328ce9ffblog-2-3-DIWZrLWw.png"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\blogs\\6565b5e4-2924-4fd6-af87-2bb9600a8e02blog-2-1-BCkeZwH-.png",
+      "PackagePath": "staticwebassets\\images\\blogs\\6565b5e4-2924-4fd6-af87-2bb9600a8e02blog-2-1-BCkeZwH-.png"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\blogs\\85006423-e7a4-4155-87ee-ce84ee7440b7blog-2-2-BjtFXaYM.png",
+      "PackagePath": "staticwebassets\\images\\blogs\\85006423-e7a4-4155-87ee-ce84ee7440b7blog-2-2-BjtFXaYM.png"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\blogs\\8b3938d6-83b3-4498-9989-08b6d29d0959watch.jpeg",
+      "PackagePath": "staticwebassets\\images\\blogs\\8b3938d6-83b3-4498-9989-08b6d29d0959watch.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\blogs\\a4b21bb9-8cd6-43eb-bee2-3163d166f33cblog-2-1-BCkeZwH-.png",
+      "PackagePath": "staticwebassets\\images\\blogs\\a4b21bb9-8cd6-43eb-bee2-3163d166f33cblog-2-1-BCkeZwH-.png"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\settings\\5e5853ec-ac06-4cca-82f7-a4a08260ee36blog-2-1-BCkeZwH-.png",
+      "PackagePath": "staticwebassets\\images\\settings\\5e5853ec-ac06-4cca-82f7-a4a08260ee36blog-2-1-BCkeZwH-.png"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\settings\\de7d2880-bec2-4282-9e2a-ae52b21de45ateacher1.jpg",
+      "PackagePath": "staticwebassets\\images\\settings\\de7d2880-bec2-4282-9e2a-ae52b21de45ateacher1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\20a4081b-f67a-4dac-93bf-bf91cc79b4c1teacher2.jpg",
+      "PackagePath": "staticwebassets\\images\\teacher\\20a4081b-f67a-4dac-93bf-bf91cc79b4c1teacher2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\97fb1429-00fd-40fd-9e7d-1bd6a28a44beteacher1.jpg",
+      "PackagePath": "staticwebassets\\images\\teacher\\97fb1429-00fd-40fd-9e7d-1bd6a28a44beteacher1.jpg"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.NurseryApp.Api.Microsoft.AspNetCore.StaticWebAssets.props",

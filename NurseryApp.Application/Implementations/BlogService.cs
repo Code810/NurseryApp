@@ -60,9 +60,10 @@ namespace NurseryApp.Application.Implementations
             return blogDto;
         }
 
-        public async Task<IEnumerable<BlogReturnDto>> GetAll()
+        public async Task<IEnumerable<BlogReturnDto>> GetAll(int? count)
         {
-            var blogs = await _unitOfWork.blogRepository.FindAllAsync(b => !b.IsDeleted);
+            var blogs = await _unitOfWork.blogRepository.GetAllAsyncWithSorting(b => !b.IsDeleted, count);
+
             if (blogs.Count() <= 0) throw new CustomException(404, "Empty blog List");
             var blogDtos = _mapper.Map<IEnumerable<BlogReturnDto>>(blogs);
 

@@ -63,6 +63,16 @@ namespace NurseryApp.Api
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<NurseryAppContext>().AddDefaultTokenProviders();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                });
+            });
+
             services.AddScoped<IAttenDanceRepository, AttenDanceRepository>();
             services.AddScoped<IFeeRepository, FeeRepository>();
             services.AddScoped<IGroupRepository, GroupRepository>();
@@ -87,6 +97,8 @@ namespace NurseryApp.Api
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IBlogService, BlogService>();
+            services.AddScoped<IBannerService, BannerService>();
+            services.AddScoped<ISettingService, SettingService>();
 
             services.AddSwaggerGen(c =>
             {
