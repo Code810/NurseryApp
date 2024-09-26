@@ -21,6 +21,7 @@ namespace NurseryApp.Data.Implementations
         public IBlogRepository blogRepository { get; private set; }
         public IBannerRepository bannerRepository { get; private set; }
         public ISettingRepository settingRepository { get; private set; }
+        public IContatctRepository contatctRepository { get; private set; }
         public UnitOfWork(NurseryAppContext context)
         {
             _context = context;
@@ -36,6 +37,7 @@ namespace NurseryApp.Data.Implementations
             blogRepository = new BlogRepository(context);
             bannerRepository = new BannerRepository(context);
             settingRepository = new SettingRepository(context);
+            contatctRepository = new ContactRepository(context);
         }
         public void Dispose()
         {

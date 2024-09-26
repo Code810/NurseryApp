@@ -86,6 +86,19 @@ namespace NurseryApp.Application.Implementations
 
             return teachersDtos;
         }
+        public async Task<TeacherListDto> GetAllWithSearch(string? text, int page)
+        {
+            var teachers = await _unitOfWork.teacherRepository.GetAllWithSearch(text, page);
+
+            if (teachers.Count() <= 0) throw new CustomException(404, "Empty blog List");
+            var teacherDtos = _mapper.Map<IEnumerable<TeacherReturnDto>>(teachers);
+
+            TeacherListDto teacherListDto = new();
+            teacherListDto.TotalCount = await _unitOfWork.teacherRepository.GetAllCount(text);
+            teacherListDto.Items = teacherDtos;
+            return teacherListDto;
+
+        }
 
         public async Task<int> Update(int? id, TeacherUpdateDto teacherUpdateDto)
         {

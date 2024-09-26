@@ -28,5 +28,19 @@ namespace NurseryApp.Data.Implementations
             }
             return await query.ToListAsync();
         }
+
+        public async Task<IEnumerable<Teacher>> GetAllWithSearch(string? text, int page = 1)
+        {
+            IQueryable<Teacher> query = _context.Teachers.Where(b => !b.IsDeleted).OrderByDescending(b => b.CreatedDate);
+            if (!string.IsNullOrEmpty(text)) query = query.Where(b => b.FirstName.ToLower().Contains(text.ToLower()) || b.LastName.ToLower().Contains(text.ToLower()));
+            IEnumerable<Teacher> teachers = await query.Skip((page - 1) * 9).Take(9).ToListAsync();
+            return teachers;
+        }
+        public async Task<int> GetAllCount(string? text)
+        {
+            IQueryable<Teacher> query = _context.Teachers.Where(b => !b.IsDeleted);
+            if (!string.IsNullOrEmpty(text)) query = query.Where(b => b.FirstName.ToLower().Contains(text.ToLower()) || b.LastName.ToLower().Contains(text.ToLower()));
+            return query.Count();
+        }
     }
 }

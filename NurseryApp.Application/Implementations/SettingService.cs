@@ -56,6 +56,14 @@ namespace NurseryApp.Application.Implementations
             var settingDto = _mapper.Map<SettingReturnDto>(setting);
             return settingDto;
         }
+        public async Task<SettingReturnDto> Get(string? key)
+        {
+            if (key == null) throw new CustomException(400, "Setting key cannot be null");
+            var setting = await _unitOfWork.settingRepository.GetAsync(s => s.Key.ToLower() == key.ToLower());
+            if (setting == null) throw new CustomException(404, "setting not found");
+            var settingDto = _mapper.Map<SettingReturnDto>(setting);
+            return settingDto;
+        }
 
         public async Task<IEnumerable<SettingReturnDto>> GetAll()
         {

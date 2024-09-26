@@ -25,17 +25,25 @@ namespace NurseryApp.Api.Controllers
         public async Task<IActionResult> Get(int? id)
         {
             return Ok(await _blogService.Get(id));
-
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             return Ok(await _blogService.Delete(id));
         }
-        [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] int? count)
+
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAll([FromQuery] int? count, [FromQuery] string? text, [FromQuery] int page = 1)
         {
-            return Ok(await _blogService.GetAll(count));
+            if (!string.IsNullOrEmpty(text) || count == null)
+            {
+                return Ok(await _blogService.GetAllWithSearch(text, page));
+            }
+            else
+            {
+                return Ok(await _blogService.GetAll(count));
+            }
         }
 
         [HttpPut("{id}")]

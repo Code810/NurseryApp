@@ -8,5 +8,6 @@ namespace NurseryApp.Application.Interfaces
         Task<int> Update(int? id, SettingUpdateDto settingUpdateDto);
         Task<IEnumerable<SettingReturnDto>> GetAll();
         Task<SettingReturnDto> Get(int? id);
+        Task<SettingReturnDto> Get(string? key);
     }
 }

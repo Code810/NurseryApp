@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "CKasAWvdRdujd5PsmQahjf4M/lJjm4Ubl9MPxDce29I=",
+  "Hash": "9y0A+ZZyJ1pmGYDNBibVQNGyc5et80MFKu1h9j3T+ek=",
   "Source": "NurseryApp.Api",
   "BasePath": "_content/NurseryApp.Api",
   "Mode": "Default",
@@ -207,12 +207,12 @@
       "OriginalItemSpec": "wwwroot\\images\\blogs\\a4b21bb9-8cd6-43eb-bee2-3163d166f33cblog-2-1-BCkeZwH-.png"
     },
     {
-      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\settings\\5e5853ec-ac06-4cca-82f7-a4a08260ee36blog-2-1-BCkeZwH-.png",
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\settings\\91999833-2afe-47f6-80a7-eedd96bd8861logoag.PNG",
       "SourceId": "NurseryApp.Api",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
       "BasePath": "_content/NurseryApp.Api",
-      "RelativePath": "images/settings/5e5853ec-ac06-4cca-82f7-a4a08260ee36blog-2-1-BCkeZwH-.png",
+      "RelativePath": "images/settings/91999833-2afe-47f6-80a7-eedd96bd8861logoag.PNG",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -223,7 +223,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\settings\\5e5853ec-ac06-4cca-82f7-a4a08260ee36blog-2-1-BCkeZwH-.png"
+      "OriginalItemSpec": "wwwroot\\images\\settings\\91999833-2afe-47f6-80a7-eedd96bd8861logoag.PNG"
     },
     {
       "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\settings\\de7d2880-bec2-4282-9e2a-ae52b21de45ateacher1.jpg",

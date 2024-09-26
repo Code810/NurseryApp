@@ -8,7 +8,6 @@ namespace NurseryApp.Api.Controllers
     [ApiController]
     public class SettingsController : ControllerBase
     {
-
         private readonly ISettingService _settingService;
 
         public SettingsController(ISettingService settingService)
@@ -17,28 +16,38 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(SettingCreateDto settingCreateDto)
+        public async Task<IActionResult> Create([FromForm] SettingCreateDto settingCreateDto)
         {
-            return Ok(await _settingService.Create(settingCreateDto));
+            var result = await _settingService.Create(settingCreateDto);
+            return Ok(result);
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int? id)
+        [HttpGet("id/{id}")]
+        public async Task<IActionResult> GetById(int id)
         {
-            return Ok(await _settingService.Get(id));
+            var result = await _settingService.Get(id);
+            return result != null ? Ok(result) : NotFound();
+        }
 
+        [HttpGet("key/{key}")]
+        public async Task<IActionResult> GetByKey(string key)
+        {
+            var result = await _settingService.Get(key);
+            return result != null ? Ok(result) : NotFound();
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            return Ok(await _settingService.GetAll());
+            var result = await _settingService.GetAll();
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, SettingUpdateDto settingUpdateDto)
+        public async Task<IActionResult> Update(int id, [FromForm] SettingUpdateDto settingUpdateDto)
         {
-            return Ok(await _settingService.Update(id, settingUpdateDto));
+            var result = await _settingService.Update(id, settingUpdateDto);
+            return result > 0 ? Ok(result) : NotFound();
         }
     }
 }

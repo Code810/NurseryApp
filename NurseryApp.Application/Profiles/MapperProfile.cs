@@ -4,6 +4,7 @@ using NurseryApp.Application.Dtos.AppUser;
 using NurseryApp.Application.Dtos.AttenDanceDto;
 using NurseryApp.Application.Dtos.Banner;
 using NurseryApp.Application.Dtos.Blog;
+using NurseryApp.Application.Dtos.Contact;
 using NurseryApp.Application.Dtos.FeeDto;
 using NurseryApp.Application.Dtos.GroupDto;
 using NurseryApp.Application.Dtos.HomeWork;
@@ -97,6 +98,10 @@ namespace NurseryApp.Application.Profiles
              .ForMember(b => b.RightFileName, map => map.MapFrom(d => d.RightFile.Save(Directory.GetCurrentDirectory(), "images/banner")))
              .ForMember(b => b.BottomFileName, map => map.MapFrom(d => d.BottomFile.Save(Directory.GetCurrentDirectory(), "images/banner")));
 
+            //Contact
+            CreateMap<ContactCreateDto, Contact>();
+            CreateMap<Contact, ContactReturnDto>();
+
             //Setting
             CreateMap<SettingCreateDto, Settings>()
        .ForMember(b => b.Value, map => map.MapFrom((src, dest) =>
@@ -117,7 +122,7 @@ namespace NurseryApp.Application.Profiles
 
             CreateMap<Settings, SettingReturnDto>()
     .ForMember(d => d.Value, map => map.MapFrom(s =>
-        (s.Value != null && (s.Value.EndsWith(".jpg") || s.Value.EndsWith(".jpeg") || s.Value.EndsWith(".png") || s.Value.EndsWith(".gif")))
+        (s.Value != null && s.Value.IsImage())
         ? $"{url}/images/settings/{s.Value}"
         : s.Value));
 

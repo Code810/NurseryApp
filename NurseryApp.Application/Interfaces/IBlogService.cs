@@ -9,5 +9,6 @@ namespace NurseryApp.Application.Interfaces
         Task<IEnumerable<BlogReturnDto>> GetAll(int? count);
         Task<BlogReturnDto> Get(int? id);
         Task<int> Delete(int? id);
+        Task<BlogListDto> GetAllWithSearch(string? text, int page);
     }
 }

@@ -32,10 +32,18 @@ namespace NurseryApp.Api.Controllers
         {
             return Ok(await _teacherService.Delete(id));
         }
-        [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] int? count)
+
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAll([FromQuery] int? count, [FromQuery] string? text, [FromQuery] int page = 1)
         {
-            return Ok(await _teacherService.GetAll(count));
+            if (!string.IsNullOrEmpty(text) || count == null)
+            {
+                return Ok(await _teacherService.GetAllWithSearch(text, page));
+            }
+            else
+            {
+                return Ok(await _teacherService.GetAll(count));
+            }
         }
 
         [HttpPut("{id}")]

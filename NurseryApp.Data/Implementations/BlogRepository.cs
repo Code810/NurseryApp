@@ -25,5 +25,20 @@ namespace NurseryApp.Data.Implementations
             }
             return await query.ToListAsync();
         }
+
+        public async Task<IEnumerable<Blog>> GetAllWithSearch(string? text, int page = 1)
+        {
+            IQueryable<Blog> query = _context.Blogs.Where(b => !b.IsDeleted).OrderByDescending(b => b.CreatedDate);
+            if (!string.IsNullOrEmpty(text)) query = query.Where(b => b.Title.ToLower().Contains(text.ToLower()) || b.Desc.ToLower().Contains(text.ToLower()));
+            IEnumerable<Blog> blogs = await query.Skip((page - 1) * 9).Take(9).ToListAsync();
+            return blogs;
+        }
+        public async Task<int> GetAllCount(string? text)
+        {
+            IQueryable<Blog> query = _context.Blogs.Where(b => !b.IsDeleted);
+            if (!string.IsNullOrEmpty(text)) query = query.Where(b => b.Title.ToLower().Contains(text.ToLower()) || b.Desc.ToLower().Contains(text.ToLower()));
+
+            return query.Count();
+        }
     }
 }

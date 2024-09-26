@@ -70,6 +70,22 @@ namespace NurseryApp.Application.Implementations
             return blogDtos;
         }
 
+        public async Task<BlogListDto> GetAllWithSearch(string? text, int page)
+        {
+            var blogs = await _unitOfWork.blogRepository.GetAllWithSearch(text, page);
+
+            if (blogs.Count() <= 0) throw new CustomException(404, "Empty blog List");
+            var blogDtos = _mapper.Map<IEnumerable<BlogReturnDto>>(blogs);
+
+            BlogListDto blogListDto = new();
+            blogListDto.TotalCount = await _unitOfWork.blogRepository.GetAllCount(text);
+            blogListDto.Items = blogDtos;
+            return blogListDto;
+
+        }
+
+
+
         public async Task<int> Update(int? id, BlogUpdateDto blogUpdateDto)
         {
             if (id == null) throw new CustomException(400, "Blog ID cannot be null");
