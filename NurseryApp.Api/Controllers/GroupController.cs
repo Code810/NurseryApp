@@ -34,11 +34,19 @@ namespace NurseryApp.Api.Controllers
             }
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Get([FromQuery] int? count)
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAll([FromQuery] int? count, [FromQuery] string? text, [FromQuery] int page = 1)
         {
-            return Ok(await _groupService.GetAll(count));
+            if (!string.IsNullOrEmpty(text) || count == null)
+            {
+                return Ok(await _groupService.GetAllWithSearch(text, page));
+            }
+            else
+            {
+                return Ok(await _groupService.GetAll(count));
+            }
         }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int? id, GroupUpdateDto groupUpdateDto)
         {

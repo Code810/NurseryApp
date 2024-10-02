@@ -357,6 +357,44 @@ namespace NurseryApp.Data.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("NurseryApp.Core.Entities.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AppUserId");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("comments");
+                });
+
             modelBuilder.Entity("NurseryApp.Core.Entities.Contact", b =>
                 {
                     b.Property<int>("Id")
@@ -626,18 +664,8 @@ namespace NurseryApp.Data.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
 
                     b.Property<string>("RelationToStudent")
                         .IsRequired()
@@ -869,6 +897,25 @@ namespace NurseryApp.Data.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("NurseryApp.Core.Entities.Comment", b =>
+                {
+                    b.HasOne("NurseryApp.Core.Entities.AppUser", "AppUser")
+                        .WithMany("Comments")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("NurseryApp.Core.Entities.Blog", "Blog")
+                        .WithMany("Comments")
+                        .HasForeignKey("BlogId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+
+                    b.Navigation("Blog");
+                });
+
             modelBuilder.Entity("NurseryApp.Core.Entities.Fee", b =>
                 {
                     b.HasOne("NurseryApp.Core.Entities.Student", "Student")
@@ -982,9 +1029,16 @@ namespace NurseryApp.Data.Migrations
                 {
                     b.Navigation("Blogs");
 
+                    b.Navigation("Comments");
+
                     b.Navigation("Parent");
 
                     b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("NurseryApp.Core.Entities.Blog", b =>
+                {
+                    b.Navigation("Comments");
                 });
 
             modelBuilder.Entity("NurseryApp.Core.Entities.Group", b =>

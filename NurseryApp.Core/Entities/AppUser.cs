@@ -11,5 +11,6 @@ namespace NurseryApp.Core.Entities
         public Parent? Parent { get; set; }
         public Teacher? Teacher { get; set; }
         public IEnumerable<Blog> Blogs { get; set; }
+        public IEnumerable<Comment> Comments { get; set; }
     }
 }

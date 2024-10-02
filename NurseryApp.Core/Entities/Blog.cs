@@ -7,5 +7,7 @@
         public string FileName { get; set; }
         public string AppUserId { get; set; }
         public AppUser AppUser { get; set; }
+        public IEnumerable<Comment> Comments { get; set; }
+
     }
 }

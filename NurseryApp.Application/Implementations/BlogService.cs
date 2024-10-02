@@ -53,12 +53,15 @@ namespace NurseryApp.Application.Implementations
         public async Task<BlogReturnDto> Get(int? id)
         {
             if (id == null) throw new CustomException(400, "Blog ID cannot be null");
-            var blog = await _unitOfWork.blogRepository.GetAsync(b => b.Id == id && !b.IsDeleted);
+            var blog = await _unitOfWork.blogRepository.GetBlogWithCommentsAndUserAsync(id.Value);
 
             if (blog == null) throw new CustomException(404, "Blog not found");
             var blogDto = _mapper.Map<BlogReturnDto>(blog);
             return blogDto;
         }
+
+
+
 
         public async Task<IEnumerable<BlogReturnDto>> GetAll(int? count)
         {

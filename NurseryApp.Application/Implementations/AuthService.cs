@@ -44,7 +44,7 @@ namespace NurseryApp.Application.Implementations
             return 1;
         }
 
-        public async Task<int> Register(RegisterDto registerDto, string scheme, string host)
+        public async Task<AppUser> Register(RegisterDto registerDto)
         {
             AppUser user = new()
             {
@@ -60,21 +60,21 @@ namespace NurseryApp.Application.Implementations
 
             await _userManager.AddToRoleAsync(user, RolesEnum.member.ToString());
 
-            string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            //string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
 
-            string link = $"{scheme}://{host}/api/Auth/confirm-email?email={Uri.EscapeDataString(user.Email)}&token={Uri.EscapeDataString(token)}";
+            //string link = $"{scheme}://{host}/api/Auth/confirm-email?email={Uri.EscapeDataString(user.Email)}&token={Uri.EscapeDataString(token)}";
 
-            string body;
-            using (StreamReader streamReader = new StreamReader("wwwroot/emailTemplate/emailConfirm.html"))
-            {
-                body = await streamReader.ReadToEndAsync();
-            }
-            body = body.Replace("{{link}}", link);
-            body = body.Replace("{{username}}", user.UserName);
+            //string body;
+            //using (StreamReader streamReader = new StreamReader("wwwroot/emailTemplate/emailConfirm.html"))
+            //{
+            //    body = await streamReader.ReadToEndAsync();
+            //}
+            //body = body.Replace("{{link}}", link);
+            //body = body.Replace("{{username}}", user.UserName);
 
-            _emailService.SendEmail(body, new List<string> { user.Email }, "Email Verification", "Verify your email");
+            //_emailService.SendEmail(body, new List<string> { user.Email }, "Email Verification", "Verify your email");
 
-            return 1;
+            return user;
         }
 
         public async Task CreateRoles()
@@ -94,10 +94,10 @@ namespace NurseryApp.Application.Implementations
             if (existUser == null)
             {
                 existUser = await _userManager.FindByEmailAsync(loginDto.UserNameOrEmail);
-                if (existUser == null) throw new CustomException(404, "User or Pasword wrong");
+                if (existUser == null) throw new CustomException(401, "User or Pasword wrong");
             }
             var result = await _userManager.CheckPasswordAsync(existUser, loginDto.Password);
-            if (!result) throw new CustomException(404, "User or Pasword wrong");
+            if (!result) throw new CustomException(401, "User or Pasword wrong");
             var roles = await _userManager.GetRolesAsync(existUser);
             return _tokenService.GetToken(existUser, roles);
 

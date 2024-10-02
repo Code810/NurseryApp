@@ -35,8 +35,16 @@ namespace NurseryApp.Application.Implementations
             var parent = _mapper.Map<Parent>(parentCreateDto);
             parent.AppUserId = parentCreateDto.AppUserId;
 
-            await _unitOfWork.parentRepository.AddAsync(parent);
-            await _unitOfWork.SaveChangesAsync();
+            try
+            {
+                await _unitOfWork.parentRepository.AddAsync(parent);
+                await _unitOfWork.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
 
             return parent.Id;

@@ -8,5 +8,6 @@ namespace NurseryApp.Core.Repositories
         Task<IEnumerable<Blog>> GetAllAsyncWithSorting(Expression<Func<Blog, bool>> predicate, int? count = null);
         Task<IEnumerable<Blog>> GetAllWithSearch(string? text, int page = 1);
         Task<int> GetAllCount(string? text);
+        Task<Blog> GetBlogWithCommentsAndUserAsync(int id);
     }
 }

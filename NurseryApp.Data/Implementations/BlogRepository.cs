@@ -40,5 +40,14 @@ namespace NurseryApp.Data.Implementations
 
             return query.Count();
         }
+
+        public async Task<Blog> GetBlogWithCommentsAndUserAsync(int id)
+        {
+            return await _context.Blogs
+                .Include(B => B.AppUser)
+                .Include(b => b.Comments.Where(c => !c.IsDeleted).OrderByDescending(c => c.CreatedDate))
+                .ThenInclude(c => c.AppUser)
+                .FirstOrDefaultAsync(b => b.Id == id && !b.IsDeleted);
+        }
     }
 }

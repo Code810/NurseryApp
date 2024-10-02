@@ -23,6 +23,7 @@ namespace NurseryApp.Data.Data
         public DbSet<Banner> Banners { get; set; }
         public DbSet<Settings> settings { get; set; }
         public DbSet<Contact> contacts { get; set; }
+        public DbSet<Comment> comments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

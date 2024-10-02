@@ -10,5 +10,6 @@ namespace NurseryApp.Application.Interfaces
         Task<IEnumerable<GroupReturnDto>> GetAll(int? count);
         Task<GroupReturnDto> Get(string? name);
         Task<GroupReturnDto> Get(int? id);
+        Task<GroupListDto> GetAllWithSearch(string? text, int page);
     }
 }

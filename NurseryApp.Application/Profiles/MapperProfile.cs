@@ -4,6 +4,7 @@ using NurseryApp.Application.Dtos.AppUser;
 using NurseryApp.Application.Dtos.AttenDanceDto;
 using NurseryApp.Application.Dtos.Banner;
 using NurseryApp.Application.Dtos.Blog;
+using NurseryApp.Application.Dtos.Comment;
 using NurseryApp.Application.Dtos.Contact;
 using NurseryApp.Application.Dtos.FeeDto;
 using NurseryApp.Application.Dtos.GroupDto;
@@ -41,6 +42,11 @@ namespace NurseryApp.Application.Profiles
             CreateMap<Group, GroupReturnDto>();
             CreateMap<GroupUpdateDto, Group>();
 
+            //Comment
+            CreateMap<CommentCreateDto, Comment>();
+            CreateMap<Comment, CommentReturnDto>();
+            CreateMap<CommentUpdateDto, Comment>();
+
             //HomeWork
             CreateMap<HomeWorkCreateDto, HomeWork>();
             CreateMap<HomeWork, HomeWorkReturnDto>();
@@ -77,7 +83,11 @@ namespace NurseryApp.Application.Profiles
             //Blog
             CreateMap<BlogCreateDto, Blog>()
               .ForMember(b => b.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/blogs")));
-            CreateMap<Blog, BlogReturnDto>().ForMember(d => d.FileName, map => map.MapFrom(B => url + "images/blogs/" + B.FileName));
+
+            CreateMap<Blog, BlogReturnDto>()
+    .ForMember(d => d.FileName, map => map.MapFrom(b => url + "images/blogs/" + b.FileName))
+    .ForMember(d => d.Comments, map => map.MapFrom(b => b.Comments));
+
             CreateMap<BlogUpdateDto, Blog>()
              .ForMember(b => b.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/blogs")));
 

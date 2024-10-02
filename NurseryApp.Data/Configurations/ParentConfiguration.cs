@@ -8,8 +8,6 @@ namespace NurseryApp.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Parent> builder)
         {
-            builder.Property(p => p.FirstName).IsRequired().HasMaxLength(15);
-            builder.Property(p => p.LastName).IsRequired().HasMaxLength(15);
             builder.Property(p => p.Adress).IsRequired().HasMaxLength(100);
             builder.Property(p => p.RelationToStudent).IsRequired().HasMaxLength(15);
             builder.HasMany(p => p.Students).WithOne(t => t.Parent).HasForeignKey(t => t.ParentId).OnDelete(DeleteBehavior.NoAction);

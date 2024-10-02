@@ -22,6 +22,7 @@ namespace NurseryApp.Data.Implementations
         public IBannerRepository bannerRepository { get; private set; }
         public ISettingRepository settingRepository { get; private set; }
         public IContatctRepository contatctRepository { get; private set; }
+        public ICommentRepository commentRepository { get; private set; }
         public UnitOfWork(NurseryAppContext context)
         {
             _context = context;
@@ -38,6 +39,7 @@ namespace NurseryApp.Data.Implementations
             bannerRepository = new BannerRepository(context);
             settingRepository = new SettingRepository(context);
             contatctRepository = new ContactRepository(context);
+            commentRepository = new CommentRepository(context);
         }
         public void Dispose()
         {
@@ -50,6 +52,9 @@ namespace NurseryApp.Data.Implementations
         }
         public async Task BeginTransactionAsync()
         {
+            if (_context == null)
+                throw new InvalidOperationException("DbContext is not initialized.");
+
             if (_transaction != null)
                 throw new InvalidOperationException("There is already an open transaction.");
 

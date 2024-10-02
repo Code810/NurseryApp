@@ -27,6 +27,7 @@ namespace NurseryApp.Application.Implementations
             ci.AddClaim(new Claim(ClaimTypes.NameIdentifier, user.Id));
             ci.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
             ci.AddClaim(new Claim(ClaimTypes.GivenName, user.FirstName));
+            ci.AddClaim(new Claim(ClaimTypes.Surname, user.LastName));
             ci.AddClaim(new Claim(ClaimTypes.Email, user.Email));
             ci.AddClaims(roles.Select(r => new Claim(ClaimTypes.Role, r)).ToList());
 

@@ -64,6 +64,19 @@ namespace NurseryApp.Application.Implementations
             return _mapper.Map<IEnumerable<GroupReturnDto>>(await _unitOfWork.groupRepository.GetAllAsyncWithSorting(g => !g.IsDeleted, count, g => g.Teacher));
         }
 
+        public async Task<GroupListDto> GetAllWithSearch(string? text, int page)
+        {
+            var groups = await _unitOfWork.groupRepository.GetAllWithSearch(text, page, g => g.Teacher);
+
+            if (groups.Count() <= 0) throw new CustomException(404, "Empty blog List");
+            var groupDtos = _mapper.Map<IEnumerable<GroupReturnDto>>(groups);
+
+            GroupListDto groupListDto = new();
+            groupListDto.TotalCount = await _unitOfWork.blogRepository.GetAllCount(text);
+            groupListDto.Items = groupDtos;
+            return groupListDto;
+        }
+
         public async Task<int> Update(int? id, GroupUpdateDto groupUpdateDto)
         {
             if (id == null) throw new CustomException(400, "group is not selected");

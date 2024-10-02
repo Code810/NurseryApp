@@ -100,6 +100,7 @@ namespace NurseryApp.Api
             services.AddScoped<IBannerService, BannerService>();
             services.AddScoped<ISettingService, SettingService>();
             services.AddScoped<IContactService, ContactService>();
+            services.AddScoped<ICommentService, CommentService>();
 
             services.AddSwaggerGen(c =>
             {

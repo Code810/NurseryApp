@@ -1,10 +1,11 @@
 ﻿using NurseryApp.Application.Dtos.Auth;
+using NurseryApp.Core.Entities;
 
 namespace NurseryApp.Application.Interfaces
 {
     public interface IAuthService
     {
-        Task<int> Register(RegisterDto registerDto, string scheme, string host);
+        Task<AppUser> Register(RegisterDto registerDto);
         Task<int> ConfirmEmail(string email, string token);
         Task CreateRoles();
         Task<string> Login(LoginDto loginDto);
