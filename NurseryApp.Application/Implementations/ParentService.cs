@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using NurseryApp.Application.Dtos.ParentDto;
 using NurseryApp.Application.Exceptions;
+using NurseryApp.Application.Helpers;
 using NurseryApp.Application.Interfaces;
 using NurseryApp.Core.Entities;
 using NurseryApp.Data.Implementations;
@@ -34,6 +35,7 @@ namespace NurseryApp.Application.Implementations
 
             var parent = _mapper.Map<Parent>(parentCreateDto);
             parent.AppUserId = parentCreateDto.AppUserId;
+            await _userManager.AddToRoleAsync(appUser, RolesEnum.parent.ToString());
 
             try
             {
@@ -68,6 +70,15 @@ namespace NurseryApp.Application.Implementations
                 p => p.Id == id && !p.IsDeleted,
                 p => p.Students,
                 p => p.AppUser);
+
+            if (parent == null) throw new CustomException(404, "Parent not found");
+            var parentDto = _mapper.Map<ParentReturnDto>(parent);
+            return parentDto;
+        }
+        public async Task<ParentReturnDto> GetByAppUserId(string? id)
+        {
+            if (id == null) throw new CustomException(400, "User ID cannot be null");
+            var parent = await _unitOfWork.parentRepository.GetByAppUserId(id);
 
             if (parent == null) throw new CustomException(404, "Parent not found");
             var parentDto = _mapper.Map<ParentReturnDto>(parent);

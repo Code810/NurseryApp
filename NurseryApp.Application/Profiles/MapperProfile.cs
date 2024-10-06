@@ -64,9 +64,27 @@ namespace NurseryApp.Application.Profiles
             //Student
             CreateMap<StudentCreateDto, Student>()
               .ForMember(s => s.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/student")));
-            CreateMap<Student, StudentReturnDto>().ForMember(d => d.FileName, map => map.MapFrom(s => url + "images/student/" + s.FileName));
+            CreateMap<Student, StudentReturnDto>().ForMember(d => d.FileName, map => map.MapFrom(s => url + "images/student/" + s.FileName))
+                .ForMember(d => d.Fees, map => map.MapFrom(b => b.Fees.OrderByDescending(f => f.DueDate)))
+                .ForMember(d => d.Group, map => map.MapFrom(b => b.Group));
+            //CreateMap<StudentUpdateDto, Student>()
+            // .ForMember(s => s.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/student")));
+
             CreateMap<StudentUpdateDto, Student>()
-             .ForMember(s => s.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/student")));
+    .ForMember(s => s.FileName, opt => opt.MapFrom((src, dest) =>
+    {
+        if (src.File != null)
+        {
+            return src.File.Save(Directory.GetCurrentDirectory(), "images/student");
+        }
+        return dest.FileName;
+    }))
+    .ForMember(s => s.FirstName, opt => opt.Condition(src => src.FirstName != null))
+    .ForMember(s => s.LastName, opt => opt.Condition(src => src.LastName != null))
+    .ForMember(s => s.DateOfBirth, opt => opt.Condition(src => src.DateOfBirth != default(DateTime)))
+    .ForMember(s => s.Gender, opt => opt.Condition(src => !string.IsNullOrEmpty(src.Gender)));
+
+
 
             //Teacher
             CreateMap<TeacherCreateDto, Teacher>()

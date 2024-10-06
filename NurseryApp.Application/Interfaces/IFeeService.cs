@@ -4,7 +4,7 @@ namespace NurseryApp.Application.Interfaces
 {
     public interface IFeeService
     {
-        Task<int> CreateFeeAndAssignToStudent(int? groupId, FeeCreateDto feeCreateDto);
+        Task<FeeReturnDto> CreateFeeAndAssignToStudent(int? groupId, FeeCreateDto feeCreateDto);
         Task<int> Update(int? id, FeeUpdateDto feeUpdateDto);
         Task<IEnumerable<FeeReturnDto>> GetAll();
         Task<IEnumerable<FeeReturnDto>> GetAll(DateTime date);

@@ -9,5 +9,6 @@ namespace NurseryApp.Data.Implementations
         public StudentRepository(NurseryAppContext context) : base(context)
         {
         }
+
     }
 }

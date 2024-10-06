@@ -9,5 +9,6 @@ namespace NurseryApp.Application.Interfaces
         Task<IEnumerable<ParentReturnDto>> GetAll();
         Task<ParentReturnDto> Get(int? id);
         Task<int> Delete(int? id);
+        Task<ParentReturnDto> GetByAppUserId(string? id);
     }
 }

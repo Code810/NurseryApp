@@ -1,4 +1,7 @@
-﻿namespace NurseryApp.Application.Dtos.StudentDto
+﻿using NurseryApp.Application.Dtos.FeeDto;
+using NurseryApp.Application.Dtos.GroupDto;
+
+namespace NurseryApp.Application.Dtos.StudentDto
 {
     public class StudentReturnDto
     {
@@ -8,6 +11,7 @@
         public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
         public string FileName { get; set; }
-        public string GroupName { get; set; }
+        public GroupReturnDto Group { get; set; }
+        public List<FeeReturnDto> Fees { get; set; }
     }
 }

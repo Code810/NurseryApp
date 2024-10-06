@@ -1,5 +1,4 @@
-﻿
-using NurseryApp.Application.Dtos.TeacherDto;
+﻿using NurseryApp.Application.Dtos.TeacherDto;
 
 namespace NurseryApp.Application.Interfaces
 {
@@ -12,5 +11,6 @@ namespace NurseryApp.Application.Interfaces
         Task<int> Delete(int? id);
 
         Task<TeacherListDto> GetAllWithSearch(string? text, int page);
+        Task<TeacherReturnDto> GetByAppUserId(string? id);
     }
 }

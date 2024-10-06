@@ -22,10 +22,18 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int id)
+        public async Task<IActionResult> Get(string id)
         {
-            return Ok(await _parentService.Get(id));
+            if (int.TryParse(id, out int intId))
+            {
+                return Ok(await _parentService.Get(intId));
+            }
+            else
+            {
+                return Ok(await _parentService.GetByAppUserId(id));
+            }
         }
+
 
         [HttpGet]
         public async Task<IActionResult> GetAll()

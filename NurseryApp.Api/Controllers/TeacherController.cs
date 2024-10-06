@@ -22,11 +22,19 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(int? id)
+        public async Task<IActionResult> Get(string id)
         {
-            return Ok(await _teacherService.Get(id));
-
+            if (int.TryParse(id, out int intId))
+            {
+                return Ok(await _teacherService.Get(intId));
+            }
+            else
+            {
+                return Ok(await _teacherService.GetByAppUserId(id));
+            }
         }
+
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int? id)
         {

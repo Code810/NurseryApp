@@ -41,6 +41,18 @@
       "PackagePath": "staticwebassets\\images\\settings\\de7d2880-bec2-4282-9e2a-ae52b21de45ateacher1.jpg"
     },
     {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\508e90fd-9476-44f6-b6ab-70deecb9fd02istockphoto-1137298365-612x612.jpg",
+      "PackagePath": "staticwebassets\\images\\student\\508e90fd-9476-44f6-b6ab-70deecb9fd02istockphoto-1137298365-612x612.jpg"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\551e0b80-ea15-4801-a7b5-356a7ca11018istockphoto-1137298365-612x612.jpg",
+      "PackagePath": "staticwebassets\\images\\student\\551e0b80-ea15-4801-a7b5-356a7ca11018istockphoto-1137298365-612x612.jpg"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\6777f444-e76e-4ec9-b89a-5cb4bdbdc700istockphoto-1137298365-612x612.jpg",
+      "PackagePath": "staticwebassets\\images\\student\\6777f444-e76e-4ec9-b89a-5cb4bdbdc700istockphoto-1137298365-612x612.jpg"
+    },
+    {
       "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\1c0013bc-181e-4fde-af7f-939ee4fc03deprofessonal3-CK92h21-.png",
       "PackagePath": "staticwebassets\\images\\teacher\\1c0013bc-181e-4fde-af7f-939ee4fc03deprofessonal3-CK92h21-.png"
     },

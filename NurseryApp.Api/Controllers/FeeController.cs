@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NurseryApp.Application.Dtos.FeeDto;
+using NurseryApp.Application.Dtos.PaymentDtos;
 using NurseryApp.Application.Interfaces;
+using Stripe;
 
 namespace NurseryApp.Api.Controllers
 {
@@ -9,22 +11,48 @@ namespace NurseryApp.Api.Controllers
     public class FeeController : ControllerBase
     {
         private readonly IFeeService _feeService;
+        private readonly IConfiguration _configuration;
 
-        public FeeController(IFeeService feeService)
+        public FeeController(IFeeService feeService, IConfiguration configuration)
         {
             _feeService = feeService;
+            _configuration = configuration;
+
+            StripeConfiguration.ApiKey = _configuration["Stripe:SecretKey"];
         }
 
-        [HttpPost("{groupId}")]
-        public async Task<IActionResult> Create(int? groupId, FeeCreateDto feeCreateDto)
+        //[HttpPost("{groupId}")]
+        //public async Task<IActionResult> Create(int? groupId, FeeCreateDto feeCreateDto)
+        //{
+        //    return Ok(await _feeService.CreateFeeAndAssignToStudent(groupId, feeCreateDto));
+        //}
+
+        [HttpPost("create-fee")]
+        public async Task<IActionResult> CreateFeeAfterPayment([FromBody] FeePaymentDto feePaymentDto)
         {
-            return Ok(await _feeService.CreateFeeAndAssignToStudent(groupId, feeCreateDto));
+            var paymentIntentService = new PaymentIntentService();
+            var paymentIntent = await paymentIntentService.GetAsync(feePaymentDto.PaymentIntentId);
+
+            if (paymentIntent.Status != "succeeded")
+            {
+                return BadRequest("Payment was not successful");
+            }
+
+            var feeCreateDto = new FeeCreateDto
+            {
+                StudentId = feePaymentDto.StudentId,
+                Amount = feePaymentDto.Amount,
+            };
+
+            return Ok(await _feeService.CreateFeeAndAssignToStudent(feePaymentDto.GroupId, feeCreateDto));
         }
+
         [HttpGet("by-id/{id}")]
         public async Task<IActionResult> Get(int? id)
         {
             return Ok(await _feeService.Get(id));
         }
+
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -47,11 +75,13 @@ namespace NurseryApp.Api.Controllers
                 return BadRequest("Invalid parameter");
             }
         }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, FeeUpdateDto feeUpdateDto)
         {
             return Ok(await _feeService.Update(id, feeUpdateDto));
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int? id)
         {

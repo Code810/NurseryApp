@@ -17,7 +17,7 @@ namespace NurseryApp.Application.Implementations
             _unitOfWork = unitOfWork;
             _mapper = mapper;
         }
-        public async Task<int> CreateFeeAndAssignToStudent(int? groupId, FeeCreateDto feeCreateDto)
+        public async Task<FeeReturnDto> CreateFeeAndAssignToStudent(int? groupId, FeeCreateDto feeCreateDto)
         {
             await _unitOfWork.BeginTransactionAsync();
             try
@@ -49,7 +49,9 @@ namespace NurseryApp.Application.Implementations
 
                 await _unitOfWork.CommitTransactionAsync();
 
-                return fee.StudentId;
+                var feeReturn = _mapper.Map<FeeReturnDto>(fee);
+
+                return feeReturn;
             }
             catch (Exception ex)
             {

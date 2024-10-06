@@ -20,13 +20,19 @@ namespace NurseryApp.Application.Dtos.StudentDto
 
             RuleFor(s => s).Custom((s, c) =>
             {
-                if (s.File != null && s.File.Length / 1024 > 300)
+                if (s.File != null)
                 {
-                    c.AddFailure("File", "File size must less than 300");
-                }
-                if (!(s.File != null && s.File.ContentType.Contains("image/")))
-                {
-                    c.AddFailure("File", "File  must only image");
+                    // Check if the file size is greater than 300 KB
+                    if (s.File.Length / 1024 > 300)
+                    {
+                        c.AddFailure("File", "File size must be less than 300 KB");
+                    }
+
+                    // Check if the file is not an image
+                    if (!s.File.ContentType.Contains("image/"))
+                    {
+                        c.AddFailure("File", "File must only be an image");
+                    }
                 }
             });
 

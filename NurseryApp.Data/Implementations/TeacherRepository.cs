@@ -42,5 +42,11 @@ namespace NurseryApp.Data.Implementations
             if (!string.IsNullOrEmpty(text)) query = query.Where(b => b.FirstName.ToLower().Contains(text.ToLower()) || b.LastName.ToLower().Contains(text.ToLower()));
             return query.Count();
         }
+
+        public async Task<Teacher> GetByAppUserId(string id)
+        {
+            return await _context.Teachers
+                .FirstOrDefaultAsync(p => p.AppUserId == id && !p.IsDeleted);
+        }
     }
 }

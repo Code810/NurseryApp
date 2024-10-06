@@ -35,6 +35,7 @@ namespace NurseryApp.Application.Implementations
 
             var teacher = _mapper.Map<Teacher>(teacherCreateDto);
             teacher.AppUserId = teacherCreateDto.AppUserId;
+            await _userManager.AddToRoleAsync(appUser, RolesEnum.teacher.ToString());
 
             await _unitOfWork.teacherRepository.AddAsync(teacher);
             await _unitOfWork.SaveChangesAsync();
@@ -113,6 +114,16 @@ namespace NurseryApp.Application.Implementations
             _unitOfWork.teacherRepository.Update(teacher);
             await _unitOfWork.SaveChangesAsync();
             return teacher.Id;
+        }
+
+        public async Task<TeacherReturnDto> GetByAppUserId(string? id)
+        {
+            if (id == null) throw new CustomException(400, "User ID cannot be null");
+            var teacher = await _unitOfWork.teacherRepository.GetByAppUserId(id);
+
+            if (teacher == null) throw new CustomException(404, "Teacher not found");
+            var teacherDto = _mapper.Map<TeacherReturnDto>(teacher);
+            return teacherDto;
         }
     }
 }

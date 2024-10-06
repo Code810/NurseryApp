@@ -60,7 +60,7 @@ namespace NurseryApp.Api
                 options.SignIn.RequireConfirmedEmail = true;
                 options.Lockout.MaxFailedAccessAttempts = 3;
                 options.Lockout.AllowedForNewUsers = true;
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+                //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<NurseryAppContext>().AddDefaultTokenProviders();
             services.AddCors(options =>
@@ -101,6 +101,7 @@ namespace NurseryApp.Api
             services.AddScoped<ISettingService, SettingService>();
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IPaymentService, PaymentService>();
 
             services.AddSwaggerGen(c =>
             {
@@ -141,11 +142,11 @@ namespace NurseryApp.Api
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("Jwt:SecretKey").Value)),
                     ValidateAudience = true,
                     ValidateIssuer = true,
-                    ValidateLifetime = true,
+                    //ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
                     ValidIssuer = config["Jwt:Issuer"],
                     ValidAudience = config["Jwt:Audience"],
-                    ClockSkew = TimeSpan.Zero
+                    //ClockSkew = TimeSpan.Zero
 
                 };
             });

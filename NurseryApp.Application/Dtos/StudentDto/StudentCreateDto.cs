@@ -17,7 +17,8 @@ namespace NurseryApp.Application.Dtos.StudentDto
     {
         public StudentCreateDtoValidator()
         {
-
+            RuleFor(s => s.FirstName).MaximumLength(50);
+            RuleFor(s => s.LastName).MaximumLength(50);
             RuleFor(s => s.DateOfBirth).Must(BeWithinAgeRange).WithMessage("The child's age must be between 2 and 7 years");
 
             RuleFor(s => s).Custom((s, c) =>
