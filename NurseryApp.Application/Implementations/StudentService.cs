@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using NurseryApp.Application.Dtos.AttenDanceDto;
+using NurseryApp.Application.Dtos.HomeWorkSubmission;
 using NurseryApp.Application.Dtos.StudentDto;
 using NurseryApp.Application.Exceptions;
 using NurseryApp.Application.Helpers;
@@ -61,9 +63,9 @@ namespace NurseryApp.Application.Implementations
 
         public async Task<IEnumerable<StudentReturnDto>> GetAll(int? parentId)
         {
-            Expression<Func<Student, bool>> predicate = parentId == null
-                ? s => !s.IsDeleted
-                : s => !s.IsDeleted && s.ParentId == parentId;
+            Expression<Func<Student, bool>> predicate = parentId != null
+                ? s => !s.IsDeleted && s.ParentId == parentId
+                : s => !s.IsDeleted;
 
             var students = await _unitOfWork.studentRepository.FindWithIncludesAsync(
                 predicate,
@@ -74,6 +76,63 @@ namespace NurseryApp.Application.Implementations
 
             return _mapper.Map<IEnumerable<StudentReturnDto>>(students);
         }
+
+        public async Task<IEnumerable<StudentReturnDto>> GetAll(int? groupId, DateTime? date)
+        {
+            if (groupId == null) throw new CustomException(400, "Group Id not sent");
+            if (date == null) throw new CustomException(400, "Date not sent");
+
+            var students = await _unitOfWork.studentRepository.FindWithIncludesAsync(
+                s => s.GroupId == groupId && !s.IsDeleted,
+                s => s.Group,
+                s => s.AttenDances);
+
+            if (!students.Any()) throw new CustomException(404, "No students found");
+
+            var studentDtos = _mapper.Map<IEnumerable<StudentReturnDto>>(students).ToList();
+
+            foreach (var studentDto in studentDtos)
+            {
+                var attendance = students.FirstOrDefault(s => s.Id == studentDto.Id)?
+                    .AttenDances?.FirstOrDefault(a => a.CreatedDate.Date == date.Value.Date);
+
+                studentDto.AttenDance = _mapper.Map<AttenDanceReturnDto>(attendance);
+            }
+
+            return studentDtos;
+        }
+
+        public async Task<IEnumerable<StudentSubmissionReturnDto>> GetAll(int? groupId, int? homeWorkId)
+        {
+            if (groupId == null) throw new CustomException(400, "Group Id not sent");
+            if (homeWorkId == null) throw new CustomException(400, "homework not selected");
+            var homeWork = await _unitOfWork.homeWorkRepository.GetAsync(h => h.Id == homeWorkId);
+            if (homeWork == null) throw new CustomException(400, "homework not found");
+
+            var students = await _unitOfWork.studentRepository.FindWithIncludesAsync(
+                s => s.GroupId == groupId && !s.IsDeleted,
+                s => s.Group,
+                s => s.AttenDances,
+                s => s.HomeWorkSubmissions);
+
+            if (!students.Any()) throw new CustomException(404, "No students found");
+
+            var studentDtos = _mapper.Map<IEnumerable<StudentSubmissionReturnDto>>(students).ToList();
+
+            foreach (var studentDto in studentDtos)
+            {
+                var attendance = students.FirstOrDefault(s => s.Id == studentDto.Id)?
+                    .AttenDances?.FirstOrDefault(a => a.CreatedDate.Date == homeWork.CreatedDate.Date);
+                var homeWorkSubmission = students.FirstOrDefault(s => s.Id == studentDto.Id)?
+                    .HomeWorkSubmissions?.FirstOrDefault(a => a.HomeWorkId == homeWorkId);
+
+                studentDto.AttenDance = _mapper.Map<AttenDanceReturnDto>(attendance);
+                studentDto.HomeWorkSubmission = _mapper.Map<HomeWorkSubmissionReturnDto>(homeWorkSubmission);
+            }
+
+            return studentDtos;
+        }
+
 
 
         public async Task<StudentReturnDto> Update(int? id, StudentUpdateDto studentUpdateDto)

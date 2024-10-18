@@ -1,4 +1,6 @@
-﻿namespace NurseryApp.Application.Dtos.ParentDto
+﻿using NurseryApp.Application.Dtos.StudentDto;
+
+namespace NurseryApp.Application.Dtos.ParentDto
 {
     public class ParentReturnDto
     {
@@ -7,7 +9,7 @@
         public string AppUserLastName { get; set; }
         public string Adress { get; set; }
         public string RelationToStudent { get; set; }
-
+        public List<StudentReturnDto> Students { get; set; }
 
     }
 

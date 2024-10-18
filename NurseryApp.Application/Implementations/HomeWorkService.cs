@@ -50,7 +50,8 @@ namespace NurseryApp.Application.Implementations
             if (groupId == null) throw new CustomException(400, "group not selected");
             var homeWorks = await _unitOfWork.homeWorkRepository.FindWithIncludesAsync(h => h.GroupId == groupId && !h.IsDeleted, h => h.Group);
             if (homeWorks.Count() <= 0) throw new CustomException(400, "Empty list");
-            return _mapper.Map<IEnumerable<HomeWorkReturnDto>>(homeWorks);
+            var orderedHomeWorks = homeWorks.OrderByDescending(h => h.CreatedDate);
+            return _mapper.Map<IEnumerable<HomeWorkReturnDto>>(orderedHomeWorks);
         }
 
         public async Task<int> Update(int? id, HomeWorkUpdateDto homeWorkUpdateDto)
@@ -60,7 +61,7 @@ namespace NurseryApp.Application.Implementations
             if (existHomeWork == null) throw new CustomException(400, "Homework not found");
             var updatedHomeWork = _mapper.Map(homeWorkUpdateDto, existHomeWork);
             _unitOfWork.homeWorkRepository.Update(updatedHomeWork);
-            _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync();
             return existHomeWork.Id;
         }
         public async Task<int> Delete(int? id)

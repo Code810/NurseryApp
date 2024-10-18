@@ -72,7 +72,6 @@ namespace NurseryApp.Application.Implementations
         public async Task<IEnumerable<AppUserReturnDto>> GetAll(string? text)
         {
             IEnumerable<AppUser> users;
-
             users = await _userManager.Users
                 .Include(u => u.Teacher)
                 .Include(u => u.Parent).Where(u => !u.IsDeleted).ToListAsync();
@@ -83,10 +82,62 @@ namespace NurseryApp.Application.Implementations
                  u.LastName.ToLower().Contains(text.ToLower()));
             }
             if (users.Count() <= 0) throw new CustomException(400, "Empty User list");
+            var userDtos = _mapper.Map<IEnumerable<AppUserReturnDto>>(users);
 
-            return _mapper.Map<IEnumerable<AppUserReturnDto>>(users);
+            // Fetch and assign roles for each user
+            foreach (var user in userDtos)
+            {
+                var appUser = users.FirstOrDefault(u => u.Id == user.Id);
+                user.Roles = (await _userManager.GetRolesAsync(appUser)).ToList();
+            }
+
+            return userDtos;
         }
 
+        public async Task<IEnumerable<AppUserReturnDto>> GetAllByRole(string? text)
+        {
+            var query = _userManager.Users
+                .Include(u => u.Teacher)
+                .Include(u => u.Parent)
+                .Where(u => !u.IsDeleted);
+
+            if (!string.IsNullOrEmpty(text))
+            {
+                var lowerText = text.ToLower();
+                query = query.Where(u => u.UserName.ToLower().Contains(lowerText) ||
+                                         u.FirstName.ToLower().Contains(lowerText) ||
+                                         u.LastName.ToLower().Contains(lowerText) ||
+                                         u.Email.ToLower().Contains(lowerText));
+            }
+
+            var users = await query.ToListAsync();
+
+            if (!users.Any())
+            {
+                throw new CustomException(400, "Empty User list");
+            }
+
+            var userDtos = _mapper.Map<IEnumerable<AppUserReturnDto>>(users);
+
+            var result = new List<AppUserReturnDto>();
+
+            foreach (var user in userDtos)
+            {
+                var appUser = users.FirstOrDefault(u => u.Id == user.Id);
+                if (appUser != null)
+                {
+                    var roles = await _userManager.GetRolesAsync(appUser);
+
+                    if (roles.Contains("member") && !roles.Any(r => r == "teacher" || r == "parent" || r == "admin"))
+                    {
+                        user.Roles = roles.ToList();
+                        result.Add(user);
+                    }
+                }
+            }
+
+            return result;
+        }
 
 
         public async Task<int> Update(string? id, AppUserUpdateDto appUserUpdateDto)
@@ -95,20 +146,20 @@ namespace NurseryApp.Application.Implementations
             var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == id && !u.IsDeleted);
             if (user == null) throw new CustomException(400, "User not found");
             var existUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == appUserUpdateDto.UserName && u.Id != id);
-            if (existUser != null) throw new CustomException(400, "This username is already in use");
-            _mapper.Map(appUserUpdateDto, user);
-            if (appUserUpdateDto.Password != null)
+            if (existUser != null) throw new CustomException(400, "Bu username artıq istifadə edilib");
+            var existUserByEmaail = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == appUserUpdateDto.Email && u.Id != id);
+            if (existUserByEmaail != null) throw new CustomException(400, "Bu email artıq istifadə edilib");
+            if (!await _userManager.CheckPasswordAsync(user, appUserUpdateDto.Password))
             {
-                var passwordValidator = new PasswordValidator<AppUser>();
-                var passwordValidationResult = await passwordValidator.ValidateAsync(_userManager, user, appUserUpdateDto.Password);
+                throw new CustomException(400, "Şifrə yalnışdır");
+            }
 
-                if (!passwordValidationResult.Succeeded)
-                {
-                    throw new CustomException(400, string.Join(", ", passwordValidationResult.Errors.Select(e => e.Description)));
-                }
+            _mapper.Map(appUserUpdateDto, user);
 
-                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
-                var result = await _userManager.ResetPasswordAsync(user, token, appUserUpdateDto.Password);
+            if (appUserUpdateDto.NewPassword != null && appUserUpdateDto.NewRePassword != null)
+            {
+
+                var result = await _userManager.ChangePasswordAsync(user, appUserUpdateDto.Password, appUserUpdateDto.NewRePassword);
 
                 if (!result.Succeeded) throw new CustomException(500, "Failed to update password");
             }
@@ -118,5 +169,33 @@ namespace NurseryApp.Application.Implementations
 
             return 1;
         }
+
+        public async Task<AppUserReturnDto> UpdateForAdmin(string? id, AppUserUpdateForAdminDto appUserUpdateDto)
+        {
+            if (id == null) throw new CustomException(400, "User Id not send");
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == id && !u.IsDeleted);
+            if (user == null) throw new CustomException(400, "User not found");
+            var existUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName == appUserUpdateDto.UserName && u.Id != id);
+            if (existUser != null) throw new CustomException(400, "Bu username artıq istifadə edilib");
+            var existUserByEmaail = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == appUserUpdateDto.Email && u.Id != id);
+            if (existUserByEmaail != null) throw new CustomException(400, "Bu email artıq istifadə edilib");
+
+            _mapper.Map(appUserUpdateDto, user);
+
+            if (!string.IsNullOrEmpty(appUserUpdateDto.Password))
+            {
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var result = await _userManager.ResetPasswordAsync(user, token, appUserUpdateDto.Password);
+
+                if (!result.Succeeded) throw new CustomException(500, "Failed to update password");
+            }
+
+            var updateResult = await _userManager.UpdateAsync(user);
+            if (!updateResult.Succeeded) throw new CustomException(500, "Failed to update user details");
+
+            return _mapper.Map<AppUserReturnDto>(user);
+        }
     }
+
+
 }

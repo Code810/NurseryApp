@@ -5,8 +5,6 @@ namespace NurseryApp.Application.Dtos.TeacherDto
 {
     public class TeacherCreateDto
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
         public string AppUserId { get; set; }
         public string? Instagram { get; set; }
         public string? Facebook { get; set; }

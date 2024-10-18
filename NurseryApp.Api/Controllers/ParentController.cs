@@ -36,9 +36,9 @@ namespace NurseryApp.Api.Controllers
 
 
         [HttpGet]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAll([FromQuery] string? text, [FromQuery] int page = 1)
         {
-            return Ok(await _parentService.GetAll());
+            return Ok(await _parentService.GetAll(text, page));
         }
 
         [HttpPut("{id}")]

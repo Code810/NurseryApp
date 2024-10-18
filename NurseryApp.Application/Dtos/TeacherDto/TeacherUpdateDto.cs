@@ -5,8 +5,6 @@ namespace NurseryApp.Application.Dtos.TeacherDto
 {
     public class TeacherUpdateDto
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
         public string? Instagram { get; set; }
         public string? Facebook { get; set; }
         public string? Twitter { get; set; }
@@ -21,13 +19,19 @@ namespace NurseryApp.Application.Dtos.TeacherDto
 
             RuleFor(t => t).Custom((t, c) =>
             {
-                if (t.File != null && t.File.Length / 1024 > 300)
+                if (t.File != null)
                 {
-                    c.AddFailure("File", "File size must less than 300");
-                }
-                if (!(t.File != null && t.File.ContentType.Contains("image/")))
-                {
-                    c.AddFailure("File", "File  must only image");
+                    // Check if the file size is greater than 300 KB
+                    if (t.File.Length / 1024 > 300)
+                    {
+                        c.AddFailure("File", "File size must be less than 300 KB");
+                    }
+
+                    // Check if the file is not an image
+                    if (!t.File.ContentType.Contains("image/"))
+                    {
+                        c.AddFailure("File", "File must only be an image");
+                    }
                 }
             });
 

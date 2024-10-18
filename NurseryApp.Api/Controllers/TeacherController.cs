@@ -16,9 +16,12 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(TeacherCreateDto teacherCreateDto)
+        public async Task<IActionResult> Create([FromForm] TeacherCreateDto teacherCreateDto)
         {
-            return Ok(await _teacherService.Create(teacherCreateDto));
+            var result = await _teacherService.Create(teacherCreateDto);
+
+            return Ok(result);
+
         }
 
         [HttpGet("{id}")]

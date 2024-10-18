@@ -29,10 +29,24 @@ namespace NurseryApp.Api.Controllers
             return Ok(users);
         }
 
+        [HttpGet("users-by-role")]
+        public async Task<IActionResult> GetUsersByRole([FromQuery] string? searchText)
+        {
+            var users = await _appUserService.GetAllByRole(searchText);
+            return Ok(users);
+        }
+
         [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateUser(string id, [FromBody] AppUserUpdateDto appUserUpdateDto)
         {
             var result = await _appUserService.Update(id, appUserUpdateDto);
+            return Ok(new { Message = "User updated successfully", Result = result });
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUserForAdmin(string id, [FromBody] AppUserUpdateForAdminDto appUserUpdateDto)
+        {
+            var result = await _appUserService.UpdateForAdmin(id, appUserUpdateDto);
             return Ok(new { Message = "User updated successfully", Result = result });
         }
 

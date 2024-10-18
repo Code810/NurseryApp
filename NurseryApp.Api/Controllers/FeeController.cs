@@ -54,9 +54,9 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(DateTime? date, string? text)
         {
-            return Ok(await _feeService.GetAll());
+            return Ok(await _feeService.GetAll(date, text));
         }
 
         [HttpGet("{value}")]

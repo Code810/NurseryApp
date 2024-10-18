@@ -58,17 +58,22 @@ namespace NurseryApp.Application.Profiles
             CreateMap<HomeWorkSubmissionUpdateDto, HomeWorkSubmission>();
             //Parent
             CreateMap<ParentCreateDto, Parent>();
-            CreateMap<Parent, ParentReturnDto>();
+            CreateMap<Parent, ParentReturnDto>()
+                .ForMember(d => d.Students, map => map.MapFrom(p => p.Students.Where(s => !s.IsDeleted)));
             CreateMap<ParentUpdateDto, Parent>();
 
             //Student
             CreateMap<StudentCreateDto, Student>()
               .ForMember(s => s.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/student")));
-            CreateMap<Student, StudentReturnDto>().ForMember(d => d.FileName, map => map.MapFrom(s => url + "images/student/" + s.FileName))
-                .ForMember(d => d.Fees, map => map.MapFrom(b => b.Fees.OrderByDescending(f => f.DueDate)))
-                .ForMember(d => d.Group, map => map.MapFrom(b => b.Group));
-            //CreateMap<StudentUpdateDto, Student>()
-            // .ForMember(s => s.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/student")));
+            CreateMap<Student, StudentReturnDto>()
+      .ForMember(d => d.FileName, map => map.MapFrom(s => url + "images/student/" + s.FileName))
+      .ForMember(d => d.Fees, map => map.MapFrom(b => b.Fees.OrderByDescending(f => f.DueDate)))
+      .ForMember(d => d.AttenDance, map => map.Ignore())
+      .ForMember(d => d.Group, map => map.MapFrom(b => b.Group));
+            CreateMap<Student, StudentSubmissionReturnDto>()
+     .ForMember(d => d.FileName, map => map.MapFrom(s => url + "images/student/" + s.FileName))
+     .ForMember(d => d.AttenDance, map => map.Ignore())
+     .ForMember(d => d.HomeWorkSubmission, map => map.Ignore());
 
             CreateMap<StudentUpdateDto, Student>()
     .ForMember(s => s.FileName, opt => opt.MapFrom((src, dest) =>
@@ -91,11 +96,25 @@ namespace NurseryApp.Application.Profiles
               .ForMember(t => t.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/teacher")));
             CreateMap<Teacher, TeacherReturnDto>().ForMember(d => d.FileName, map => map.MapFrom(t => url + "images/teacher/" + t.FileName));
             CreateMap<TeacherUpdateDto, Teacher>()
-             .ForMember(t => t.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/teacher")));
+             .ForMember(s => s.FileName, opt => opt.MapFrom((src, dest) =>
+             {
+                 if (src.File != null)
+                 {
+                     return src.File.Save(Directory.GetCurrentDirectory(), "images/teacher");
+                 }
+                 return dest.FileName;
+             }))
+    .ForMember(s => s.Instagram, opt => opt.Condition(src => src.Instagram != null))
+    .ForMember(s => s.Facebook, opt => opt.Condition(src => src.Facebook != null))
+    .ForMember(s => s.Twitter, opt => opt.Condition(src => src.Twitter != null))
+    .ForMember(s => s.Linkedin, opt => opt.Condition(src => src.Linkedin != null));
 
             //AppUser
             CreateMap<AppUserUpdateDto, AppUser>()
            .ForMember(dest => dest.PasswordHash, opt => opt.Ignore());
+            CreateMap<AppUserUpdateForAdminDto, AppUser>()
+          .ForMember(dest => dest.PasswordHash, opt => opt.Ignore());
+
             CreateMap<AppUser, AppUserReturnDto>();
 
             //Blog
@@ -107,7 +126,20 @@ namespace NurseryApp.Application.Profiles
     .ForMember(d => d.Comments, map => map.MapFrom(b => b.Comments));
 
             CreateMap<BlogUpdateDto, Blog>()
-             .ForMember(b => b.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/blogs")));
+            .ForMember(s => s.FileName, opt => opt.MapFrom((src, dest) =>
+            {
+                if (src.File != null)
+                {
+                    return src.File.Save(Directory.GetCurrentDirectory(), "images/blogs");
+                }
+                return dest.FileName;
+            }));
+
+
+
+
+
+
 
             //Banner
             CreateMap<BannerCreateDto, Banner>()

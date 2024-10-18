@@ -85,16 +85,23 @@ namespace NurseryApp.Application.Implementations
             return parentDto;
         }
 
-        public async Task<IEnumerable<ParentReturnDto>> GetAll()
+        public async Task<ParentListDto> GetAll(string? text, int page = 1)
         {
             var parents = await _unitOfWork.parentRepository.FindWithIncludesAsync(
                 p => !p.IsDeleted,
-                p => p.Students,
-                p => p.AppUser);
+            p => p.Students,
+            p => p.AppUser);
+            if (!string.IsNullOrEmpty(text)) parents = parents.Where(b => b.AppUser.FirstName.ToLower().Contains(text.ToLower()) || b.AppUser.LastName.ToLower().Contains(text.ToLower()) || b.AppUser.Email.ToLower().Contains(text.ToLower()));
+            var count = parents.Count();
+            parents = parents.Skip((page - 1) * 9).Take(9);
+
             if (parents.Count() <= 0) throw new CustomException(404, "Empty Parent List");
             var parentDtos = _mapper.Map<IEnumerable<ParentReturnDto>>(parents);
+            ParentListDto parentListDto = new ParentListDto();
+            parentListDto.Items = parentDtos;
+            parentListDto.TotalCount = count;
 
-            return parentDtos;
+            return parentListDto;
         }
 
         public async Task<int> Update(int? id, ParentUpdateDto parentUpdateDto)

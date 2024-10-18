@@ -1,4 +1,5 @@
-﻿using NurseryApp.Application.Dtos.FeeDto;
+﻿using NurseryApp.Application.Dtos.AttenDanceDto;
+using NurseryApp.Application.Dtos.FeeDto;
 using NurseryApp.Application.Dtos.GroupDto;
 
 namespace NurseryApp.Application.Dtos.StudentDto
@@ -13,5 +14,6 @@ namespace NurseryApp.Application.Dtos.StudentDto
         public string FileName { get; set; }
         public GroupReturnDto Group { get; set; }
         public List<FeeReturnDto> Fees { get; set; }
+        public AttenDanceReturnDto? AttenDance { get; set; }
     }
 }

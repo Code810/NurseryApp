@@ -88,9 +88,10 @@ namespace NurseryApp.Application.Implementations
                 if (existTeacher == null) throw new CustomException(400, "Teacher not found");
                 if (existTeacher.Group != null && existTeacher.Group.Id != id) throw new CustomException(400, "Teacher is busy select another teacher");
             }
-            else groupUpdateDto.TeacherId = null;
+            else groupUpdateDto.TeacherId = existGroup.TeacherId;
             var existByNameGroup = await _unitOfWork.groupRepository.GetAsync(g => g.Name.ToLower() == groupUpdateDto.Name.ToLower() && g.Id != id && !g.IsDeleted);
             if (existByNameGroup != null) throw new CustomException(400, "This group name is already used please write another name");
+
             _mapper.Map(groupUpdateDto, existGroup);
             _unitOfWork.groupRepository.Update(existGroup);
             await _unitOfWork.SaveChangesAsync();

@@ -35,9 +35,9 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpGet("homeWork/{homeWorkId}")]
-        public async Task<IActionResult> GetAllByHomeWorkId(int? homeWorkId)
+        public async Task<IActionResult> GetAllByHomeWorkId(int? homeWorkId, int? studentId)
         {
-            return Ok(await _homeWorkSubmissionService.GetAll(homeWorkId));
+            return Ok(await _homeWorkSubmissionService.GetAll(homeWorkId, studentId));
         }
 
         [HttpPut("{id}")]

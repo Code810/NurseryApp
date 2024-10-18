@@ -71,11 +71,47 @@ namespace NurseryApp.Application.Implementations
             return feeReturn;
         }
 
-        public async Task<IEnumerable<FeeReturnDto>> GetAll()
+        public async Task<IEnumerable<FeeReturnDto>> GetAll(DateTime? date, string? text)
         {
-            var fees = await _unitOfWork.feeRepository.FindWithIncludesAsync(f => !f.IsDeleted, f => f.Student);
+            IEnumerable<Fee> fees;
+
+            if (date != null && string.IsNullOrEmpty(text))
+            {
+                fees = await _unitOfWork.feeRepository.FindWithIncludesAsync(
+                    f => !f.IsDeleted && f.PaidDate.Date == date.Value.Date,
+                    f => f.Student
+                );
+            }
+            else if (date == null && !string.IsNullOrEmpty(text))
+            {
+                string loweredText = text.ToLower();
+                fees = await _unitOfWork.feeRepository.FindWithIncludesAsync(
+                    f => !f.IsDeleted &&
+                         (f.Student.FirstName.ToLower().Contains(loweredText) || f.Student.LastName.ToLower().Contains(loweredText)),
+                    f => f.Student
+                );
+            }
+            else if (date != null && !string.IsNullOrEmpty(text))
+            {
+                string loweredText = text.ToLower();
+                fees = await _unitOfWork.feeRepository.FindWithIncludesAsync(
+                    f => !f.IsDeleted &&
+                         f.PaidDate.Date == date.Value.Date &&
+                         (f.Student.FirstName.ToLower().Contains(loweredText) || f.Student.LastName.ToLower().Contains(loweredText)),
+                    f => f.Student
+                );
+            }
+            else
+            {
+                fees = await _unitOfWork.feeRepository.FindWithIncludesAsync(
+                    f => !f.IsDeleted,
+                    f => f.Student
+                );
+            }
+
             return _mapper.Map<IEnumerable<FeeReturnDto>>(fees);
         }
+
 
         public async Task<IEnumerable<FeeReturnDto>> GetAll(DateTime date)
         {

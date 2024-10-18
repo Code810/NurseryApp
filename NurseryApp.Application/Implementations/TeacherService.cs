@@ -35,12 +35,11 @@ namespace NurseryApp.Application.Implementations
 
             var teacher = _mapper.Map<Teacher>(teacherCreateDto);
             teacher.AppUserId = teacherCreateDto.AppUserId;
+            teacher.FirstName = appUser.FirstName;
+            teacher.LastName = appUser.LastName;
             await _userManager.AddToRoleAsync(appUser, RolesEnum.teacher.ToString());
-
             await _unitOfWork.teacherRepository.AddAsync(teacher);
             await _unitOfWork.SaveChangesAsync();
-
-
             return teacher.Id;
         }
 
@@ -56,6 +55,8 @@ namespace NurseryApp.Application.Implementations
                 group.TeacherId = null;
                 _unitOfWork.groupRepository.Update(group);
             }
+            var user = _userManager.Users.FirstOrDefault(u => u.Id == teacher.AppUserId && !u.IsDeleted);
+            _userManager.RemoveFromRoleAsync(user, RolesEnum.teacher.ToString());
             Helper.DeleteImage("teacher", teacher.FileName);
             _unitOfWork.teacherRepository.Update(teacher);
             await _unitOfWork.SaveChangesAsync();
@@ -110,6 +111,7 @@ namespace NurseryApp.Application.Implementations
             {
                 Helper.DeleteImage("teacher", teacher.FileName);
             }
+
             _mapper.Map(teacherUpdateDto, teacher);
             _unitOfWork.teacherRepository.Update(teacher);
             await _unitOfWork.SaveChangesAsync();

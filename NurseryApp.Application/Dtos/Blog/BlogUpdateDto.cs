@@ -15,16 +15,19 @@ namespace NurseryApp.Application.Dtos.Blog
         public BlogUpdateDtoValidator()
         {
 
-
-            RuleFor(t => t).Custom((t, c) =>
+            RuleFor(s => s).Custom((s, c) =>
             {
-                if (t.File != null && t.File.Length / 1024 > 300)
+                if (s.File != null)
                 {
-                    c.AddFailure("File", "File size must less than 300");
-                }
-                if (!(t.File != null && t.File.ContentType.Contains("image/")))
-                {
-                    c.AddFailure("File", "File  must only image");
+                    if (s.File.Length / 1024 > 300)
+                    {
+                        c.AddFailure("File", "File size must be less than 300 KB");
+                    }
+
+                    if (!s.File.ContentType.Contains("image/"))
+                    {
+                        c.AddFailure("File", "File must only be an image");
+                    }
                 }
             });
 

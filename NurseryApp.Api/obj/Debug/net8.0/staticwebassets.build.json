@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "QWm4Vv4TfEGzWPYF34p9WddmQ2YKO47zsdyijevl6Z0=",
+  "Hash": "a33cokD9ZyhTQEY1dybu5wqkTlromnPQfS7SIQO2c1E=",
   "Source": "NurseryApp.Api",
   "BasePath": "_content/NurseryApp.Api",
   "Mode": "Default",
@@ -264,6 +264,25 @@
       "OriginalItemSpec": "wwwroot\\images\\student\\6777f444-e76e-4ec9-b89a-5cb4bdbdc700istockphoto-1137298365-612x612.jpg"
     },
     {
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\e32b21dd-2855-40ed-adf9-0d71be455ce2istockphoto-1137298365-612x612.jpg",
+      "SourceId": "NurseryApp.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
+      "BasePath": "_content/NurseryApp.Api",
+      "RelativePath": "images/student/e32b21dd-2855-40ed-adf9-0d71be455ce2istockphoto-1137298365-612x612.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\student\\e32b21dd-2855-40ed-adf9-0d71be455ce2istockphoto-1137298365-612x612.jpg"
+    },
+    {
       "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\1c0013bc-181e-4fde-af7f-939ee4fc03deprofessonal3-CK92h21-.png",
       "SourceId": "NurseryApp.Api",
       "SourceType": "Discovered",
@@ -283,12 +302,12 @@
       "OriginalItemSpec": "wwwroot\\images\\teacher\\1c0013bc-181e-4fde-af7f-939ee4fc03deprofessonal3-CK92h21-.png"
     },
     {
-      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\41d97ce5-27ee-4b08-94b8-724b4e2fdc6d6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
       "SourceId": "NurseryApp.Api",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
       "BasePath": "_content/NurseryApp.Api",
-      "RelativePath": "images/teacher/6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
+      "RelativePath": "images/teacher/41d97ce5-27ee-4b08-94b8-724b4e2fdc6d6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -299,7 +318,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\teacher\\6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png"
+      "OriginalItemSpec": "wwwroot\\images\\teacher\\41d97ce5-27ee-4b08-94b8-724b4e2fdc6d6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png"
     },
     {
       "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\6e5bbfd6-3329-43c6-8b7d-df11438f9505professonal1-qOvmYNSP.png",
@@ -319,6 +338,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\teacher\\6e5bbfd6-3329-43c6-8b7d-df11438f9505professonal1-qOvmYNSP.png"
+    },
+    {
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\95763074-1b0d-4dca-97b6-f56b6acab5e56b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
+      "SourceId": "NurseryApp.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
+      "BasePath": "_content/NurseryApp.Api",
+      "RelativePath": "images/teacher/95763074-1b0d-4dca-97b6-f56b6acab5e56b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\teacher\\95763074-1b0d-4dca-97b6-f56b6acab5e56b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png"
     }
   ]
 }

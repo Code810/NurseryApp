@@ -53,16 +53,24 @@
       "PackagePath": "staticwebassets\\images\\student\\6777f444-e76e-4ec9-b89a-5cb4bdbdc700istockphoto-1137298365-612x612.jpg"
     },
     {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\e32b21dd-2855-40ed-adf9-0d71be455ce2istockphoto-1137298365-612x612.jpg",
+      "PackagePath": "staticwebassets\\images\\student\\e32b21dd-2855-40ed-adf9-0d71be455ce2istockphoto-1137298365-612x612.jpg"
+    },
+    {
       "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\1c0013bc-181e-4fde-af7f-939ee4fc03deprofessonal3-CK92h21-.png",
       "PackagePath": "staticwebassets\\images\\teacher\\1c0013bc-181e-4fde-af7f-939ee4fc03deprofessonal3-CK92h21-.png"
     },
     {
-      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
-      "PackagePath": "staticwebassets\\images\\teacher\\6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png"
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\41d97ce5-27ee-4b08-94b8-724b4e2fdc6d6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
+      "PackagePath": "staticwebassets\\images\\teacher\\41d97ce5-27ee-4b08-94b8-724b4e2fdc6d6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png"
     },
     {
       "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\6e5bbfd6-3329-43c6-8b7d-df11438f9505professonal1-qOvmYNSP.png",
       "PackagePath": "staticwebassets\\images\\teacher\\6e5bbfd6-3329-43c6-8b7d-df11438f9505professonal1-qOvmYNSP.png"
+    },
+    {
+      "Id": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\95763074-1b0d-4dca-97b6-f56b6acab5e56b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
+      "PackagePath": "staticwebassets\\images\\teacher\\95763074-1b0d-4dca-97b6-f56b6acab5e56b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.NurseryApp.Api.Microsoft.AspNetCore.StaticWebAssets.props",

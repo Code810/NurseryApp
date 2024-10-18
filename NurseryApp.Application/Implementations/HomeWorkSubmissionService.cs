@@ -4,6 +4,7 @@ using NurseryApp.Application.Exceptions;
 using NurseryApp.Application.Interfaces;
 using NurseryApp.Core.Entities;
 using NurseryApp.Data.Implementations;
+using System.Linq.Expressions;
 
 namespace NurseryApp.Application.Implementations
 {
@@ -58,10 +59,15 @@ namespace NurseryApp.Application.Implementations
             return _mapper.Map<IEnumerable<HomeWorkSubmissionReturnDto>>(homeWorkSubmissions);
         }
 
-        public async Task<IEnumerable<HomeWorkSubmissionReturnDto>> GetAll(int? homeWorkId)
+        public async Task<IEnumerable<HomeWorkSubmissionReturnDto>> GetAll(int? homeWorkId, int? studentId)
         {
             if (homeWorkId == null) throw new CustomException(400, "homework not selected");
-            var homeWorkSubmissions = await _unitOfWork.homeWorkSubmissionRepository.FindWithIncludesAsync(h => h.HomeWorkId == homeWorkId && !h.IsDeleted, h => h.Student, h => h.HomeWork);
+            Expression<Func<HomeWorkSubmission, bool>> predicate = (h => h.HomeWorkId == homeWorkId &&
+                (studentId == null || h.StudentId == studentId) &&
+                !h.IsDeleted);
+
+            var homeWorkSubmissions = await _unitOfWork.homeWorkSubmissionRepository.FindWithIncludesAsync(predicate, h => h.Student, h => h.HomeWork);
+
             if (homeWorkSubmissions.Count() <= 0) throw new CustomException(400, "Empty List");
             return _mapper.Map<IEnumerable<HomeWorkSubmissionReturnDto>>(homeWorkSubmissions);
         }

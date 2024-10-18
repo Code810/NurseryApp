@@ -20,8 +20,11 @@ namespace NurseryApp.Application.Implementations
 
         public async Task<int> CreateOrUpdate(AttenDanceCreateDto attenDanceCreateDto)
         {
+            bool existStudent = await _unitOfWork.studentRepository.IsExist(s => s.Id == attenDanceCreateDto.StudentId && !s.IsDeleted);
+            if (!existStudent) throw new CustomException(404, "Student not found");
+            var today = DateTime.Now.Date;
             var attenDance = await _unitOfWork.attenDanceRepository.GetAsync(a => a.StudentId == attenDanceCreateDto.StudentId
-            && a.Date.Date == DateTime.Now.Date && !a.IsDeleted);
+                && a.Date.Date == today && !a.IsDeleted);
             if (attenDance == null)
             {
                 attenDance = _mapper.Map<AttenDance>(attenDanceCreateDto);
@@ -35,7 +38,15 @@ namespace NurseryApp.Application.Implementations
                 attenDance.UpdatedDate = DateTime.Now;
                 _unitOfWork.attenDanceRepository.Update(attenDance);
             }
-            await _unitOfWork.SaveChangesAsync();
+            try
+            {
+                await _unitOfWork.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             return attenDance.Id;
         }
 

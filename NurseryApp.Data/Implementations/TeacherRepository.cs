@@ -31,8 +31,10 @@ namespace NurseryApp.Data.Implementations
 
         public async Task<IEnumerable<Teacher>> GetAllWithSearch(string? text, int page = 1)
         {
-            IQueryable<Teacher> query = _context.Teachers.Where(b => !b.IsDeleted).OrderByDescending(b => b.CreatedDate);
-            if (!string.IsNullOrEmpty(text)) query = query.Where(b => b.FirstName.ToLower().Contains(text.ToLower()) || b.LastName.ToLower().Contains(text.ToLower()));
+            IQueryable<Teacher> query = _context.Teachers
+                .Include(t => t.Group)
+                .Where(b => !b.IsDeleted).OrderByDescending(b => b.CreatedDate);
+            if (!string.IsNullOrEmpty(text)) query = query.Where(b => b.FirstName.ToLower().Contains(text.ToLower()) || b.LastName.ToLower().Contains(text.ToLower()) || b.Group.Name.ToLower().Contains(text.ToLower()));
             IEnumerable<Teacher> teachers = await query.Skip((page - 1) * 9).Take(9).ToListAsync();
             return teachers;
         }
@@ -46,6 +48,7 @@ namespace NurseryApp.Data.Implementations
         public async Task<Teacher> GetByAppUserId(string id)
         {
             return await _context.Teachers
+                .Include(t => t.Group)
                 .FirstOrDefaultAsync(p => p.AppUserId == id && !p.IsDeleted);
         }
     }
