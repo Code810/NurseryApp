@@ -1,0 +1,45 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'The reason for running the workflow'
+        required: true
+        default: 'Manual build from GitHub UI'
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Restore Dependencies
+        run: dotnet restore
+
+      - name: Build 
+        run: dotnet build NurseryApp.Api/NurseryApp.Api.csproj --configuration Release --no-restore
+
+      - name: Build Docker images
+        run: docker compose build
+
+      - name: Recreate Docker containers
+        run: docker compose up -d --force-recreate
+
+      - name: Remove unused Docker images
+        run: docker image prune -f

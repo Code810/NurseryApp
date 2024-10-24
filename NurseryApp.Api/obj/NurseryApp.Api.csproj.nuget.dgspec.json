@@ -64,6 +64,10 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
+            "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": {
+              "target": "Package",
+              "version": "[1.20.1, )"
+            },
             "Stripe.net": {
               "target": "Package",
               "version": "[46.1.0, )"

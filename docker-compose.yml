@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  mursery.api:
+    build:
+      context: .
+      dockerfile: ./NurseryApp.Api/Dockerfile
+    ports:
+      - "8270:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    extra_hosts:
+      - "localhost:host-gateway"
+    networks:
+      - localnet
+    depends_on:
+      - mursery.database
+
+  mursery.database:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433:1433"
+    networks:
+      - localnet
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: YourStrong!Passw0rd
+      MSSQL_PID: "Express"
+    volumes:
+      - mssql_data:/var/opt/mssql
+
+volumes:
+  mssql_data:
+
+networks:
+  localnet:

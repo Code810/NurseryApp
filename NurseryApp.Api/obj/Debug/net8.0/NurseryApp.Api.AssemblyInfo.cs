@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("66db0d53-dba6-47cf-8037-a212ee6f18ec")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("NurseryApp.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa1078f4408b40822fb4fd1068f513b2a6406b4a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71d418d06faeb069c19a843263e72070928b4a05")]
 [assembly: System.Reflection.AssemblyProductAttribute("NurseryApp.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NurseryApp.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
