@@ -33,7 +33,7 @@ jobs:
         run: ls
       
       - name: Restore Dependencies
-        run: dotnet restore .\NurseryApp.sln
+        run: dotnet restore NurseryApp.sln
 
       - name: Build 
         run: dotnet build NurseryApp.Api/NurseryApp.Api.csproj --configuration Release --no-restore
