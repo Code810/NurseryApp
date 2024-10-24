@@ -182,6 +182,7 @@ namespace NurseryApp.Api
                 });
             });
             services.AddSignalR();
+            services.AddHealthChecks();
 
         }
     }
