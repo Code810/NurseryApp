@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\NurseryApp.Api.props" />
-</Project>
