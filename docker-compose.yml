@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  mursery.api:
+  nursery.api:
     build:
       context: .
       dockerfile: ./NurseryApp.Api/Dockerfile
@@ -14,9 +14,9 @@ services:
     networks:
       - localnet
     depends_on:
-      - mursery.database
+      - nursery.database
 
-  mursery.database:
+  nursery.database:
     image: mcr.microsoft.com/mssql/server:2022-latest
     ports:
       - "1433:1433"
