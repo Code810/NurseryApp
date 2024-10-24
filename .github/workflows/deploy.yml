@@ -28,6 +28,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+
+      - name: List of files
+        run: ls
       
       - name: Restore Dependencies
         run: dotnet restore .\NurseryApp.sln
