@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "a33cokD9ZyhTQEY1dybu5wqkTlromnPQfS7SIQO2c1E=",
+  "Hash": "uxJoE+V+1JomrMOZvMTyx2M3RNCSasP0+u8WiA4MUgI=",
   "Source": "NurseryApp.Api",
   "BasePath": "_content/NurseryApp.Api",
   "Mode": "Default",
@@ -188,6 +188,44 @@
       "OriginalItemSpec": "wwwroot\\images\\settings\\a28766c0-350e-4a63-995c-950b88779da0logoag.PNG"
     },
     {
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\settings\\b717db0a-a395-43ce-ac7f-a4f20a88a3dclogoag.PNG",
+      "SourceId": "NurseryApp.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
+      "BasePath": "_content/NurseryApp.Api",
+      "RelativePath": "images/settings/b717db0a-a395-43ce-ac7f-a4f20a88a3dclogoag.PNG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\settings\\b717db0a-a395-43ce-ac7f-a4f20a88a3dclogoag.PNG"
+    },
+    {
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\settings\\cb676348-5142-41f4-8921-f5f41c99ab25logoag.PNG",
+      "SourceId": "NurseryApp.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
+      "BasePath": "_content/NurseryApp.Api",
+      "RelativePath": "images/settings/cb676348-5142-41f4-8921-f5f41c99ab25logoag.PNG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\settings\\cb676348-5142-41f4-8921-f5f41c99ab25logoag.PNG"
+    },
+    {
       "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\settings\\de7d2880-bec2-4282-9e2a-ae52b21de45ateacher1.jpg",
       "SourceId": "NurseryApp.Api",
       "SourceType": "Discovered",
@@ -264,6 +302,44 @@
       "OriginalItemSpec": "wwwroot\\images\\student\\6777f444-e76e-4ec9-b89a-5cb4bdbdc700istockphoto-1137298365-612x612.jpg"
     },
     {
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\849ac4b3-96eb-46a0-94db-628582223fe8istockphoto-998518584-612x612.jpg",
+      "SourceId": "NurseryApp.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
+      "BasePath": "_content/NurseryApp.Api",
+      "RelativePath": "images/student/849ac4b3-96eb-46a0-94db-628582223fe8istockphoto-998518584-612x612.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\student\\849ac4b3-96eb-46a0-94db-628582223fe8istockphoto-998518584-612x612.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\a72a35d7-20e0-47e4-a890-bd2aee2693ceistockphoto-1137298365-612x612.jpg",
+      "SourceId": "NurseryApp.Api",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
+      "BasePath": "_content/NurseryApp.Api",
+      "RelativePath": "images/student/a72a35d7-20e0-47e4-a890-bd2aee2693ceistockphoto-1137298365-612x612.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\student\\a72a35d7-20e0-47e4-a890-bd2aee2693ceistockphoto-1137298365-612x612.jpg"
+    },
+    {
       "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\e32b21dd-2855-40ed-adf9-0d71be455ce2istockphoto-1137298365-612x612.jpg",
       "SourceId": "NurseryApp.Api",
       "SourceType": "Discovered",
@@ -283,12 +359,12 @@
       "OriginalItemSpec": "wwwroot\\images\\student\\e32b21dd-2855-40ed-adf9-0d71be455ce2istockphoto-1137298365-612x612.jpg"
     },
     {
-      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\1c0013bc-181e-4fde-af7f-939ee4fc03deprofessonal3-CK92h21-.png",
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\student\\e836530a-1cc8-4a2c-b564-c29d877b22a06b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
       "SourceId": "NurseryApp.Api",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
       "BasePath": "_content/NurseryApp.Api",
-      "RelativePath": "images/teacher/1c0013bc-181e-4fde-af7f-939ee4fc03deprofessonal3-CK92h21-.png",
+      "RelativePath": "images/student/e836530a-1cc8-4a2c-b564-c29d877b22a06b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -299,15 +375,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\teacher\\1c0013bc-181e-4fde-af7f-939ee4fc03deprofessonal3-CK92h21-.png"
+      "OriginalItemSpec": "wwwroot\\images\\student\\e836530a-1cc8-4a2c-b564-c29d877b22a06b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png"
     },
     {
-      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\41d97ce5-27ee-4b08-94b8-724b4e2fdc6d6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\5e1aa0be-dbd8-4e8a-9f74-ac96b9a030786b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
       "SourceId": "NurseryApp.Api",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
       "BasePath": "_content/NurseryApp.Api",
-      "RelativePath": "images/teacher/41d97ce5-27ee-4b08-94b8-724b4e2fdc6d6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
+      "RelativePath": "images/teacher/5e1aa0be-dbd8-4e8a-9f74-ac96b9a030786b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -318,15 +394,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\teacher\\41d97ce5-27ee-4b08-94b8-724b4e2fdc6d6b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png"
+      "OriginalItemSpec": "wwwroot\\images\\teacher\\5e1aa0be-dbd8-4e8a-9f74-ac96b9a030786b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png"
     },
     {
-      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\6e5bbfd6-3329-43c6-8b7d-df11438f9505professonal1-qOvmYNSP.png",
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\8ada0714-1df1-499c-a55e-5310e0bf0556depositphotos_118565150-stock-photo-young-male-teacher.jpg",
       "SourceId": "NurseryApp.Api",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
       "BasePath": "_content/NurseryApp.Api",
-      "RelativePath": "images/teacher/6e5bbfd6-3329-43c6-8b7d-df11438f9505professonal1-qOvmYNSP.png",
+      "RelativePath": "images/teacher/8ada0714-1df1-499c-a55e-5310e0bf0556depositphotos_118565150-stock-photo-young-male-teacher.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -337,15 +413,15 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\teacher\\6e5bbfd6-3329-43c6-8b7d-df11438f9505professonal1-qOvmYNSP.png"
+      "OriginalItemSpec": "wwwroot\\images\\teacher\\8ada0714-1df1-499c-a55e-5310e0bf0556depositphotos_118565150-stock-photo-young-male-teacher.jpg"
     },
     {
-      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\95763074-1b0d-4dca-97b6-f56b6acab5e56b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
+      "Identity": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\images\\teacher\\ce5bb8bb-0b93-4d21-af60-bd4f994c0457shutterstock_303112742-1.jpg",
       "SourceId": "NurseryApp.Api",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\seidb\\OneDrive\\Masaüstü\\NurseryApp\\NurseryApp\\NurseryApp.Api\\wwwroot\\",
       "BasePath": "_content/NurseryApp.Api",
-      "RelativePath": "images/teacher/95763074-1b0d-4dca-97b6-f56b6acab5e56b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png",
+      "RelativePath": "images/teacher/ce5bb8bb-0b93-4d21-af60-bd4f994c0457shutterstock_303112742-1.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -356,7 +432,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\teacher\\95763074-1b0d-4dca-97b6-f56b6acab5e56b62d1ae-a78c-409f-acd3-84f62e460916professonal2-CQO0au5P.png"
+      "OriginalItemSpec": "wwwroot\\images\\teacher\\ce5bb8bb-0b93-4d21-af60-bd4f994c0457shutterstock_303112742-1.jpg"
     }
   ]
 }

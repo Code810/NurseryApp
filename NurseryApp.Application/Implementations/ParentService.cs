@@ -57,6 +57,8 @@ namespace NurseryApp.Application.Implementations
             if (id == null) throw new CustomException(400, "Parent ID cannot be null");
             var parent = await _unitOfWork.parentRepository.GetAsync(p => p.Id == id && !p.IsDeleted);
             if (parent == null) throw new CustomException(404, "Parent not found");
+            var user = _userManager.Users.FirstOrDefault(u => u.Id == parent.AppUserId && !u.IsDeleted);
+            _userManager.RemoveFromRoleAsync(user, RolesEnum.parent.ToString());
             parent.IsDeleted = true;
             _unitOfWork.parentRepository.Update(parent);
             await _unitOfWork.SaveChangesAsync();

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NurseryApp.Application.Dtos.AttenDanceDto;
 using NurseryApp.Application.Interfaces;
 
@@ -6,6 +7,7 @@ namespace NurseryApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "teacher")]
     public class AttenDanceController : ControllerBase
     {
         private readonly IAttenDanceService _attenDanceService;

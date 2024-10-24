@@ -23,6 +23,11 @@ namespace NurseryApp.Data.Implementations
         public ISettingRepository settingRepository { get; private set; }
         public IContatctRepository contatctRepository { get; private set; }
         public ICommentRepository commentRepository { get; private set; }
+
+        public IChatMessageRepository chatMessageRepository { get; private set; }
+
+        public IGroupMessageRepository groupMessageRepository { get; private set; }
+
         public UnitOfWork(NurseryAppContext context)
         {
             _context = context;
@@ -40,6 +45,8 @@ namespace NurseryApp.Data.Implementations
             settingRepository = new SettingRepository(context);
             contatctRepository = new ContactRepository(context);
             commentRepository = new CommentRepository(context);
+            chatMessageRepository = new ChatMessageRepository(context);
+            groupMessageRepository = new GroupMessageRepository(context);
         }
         public void Dispose()
         {

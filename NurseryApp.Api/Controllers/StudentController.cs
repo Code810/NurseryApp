@@ -16,14 +16,14 @@ namespace NurseryApp.Api.Controllers
             _studentService = studentService;
         }
 
-        [Authorize(Roles = "parent,teacher")]
+        [Authorize(Roles = "admin,parent")]
         [HttpPost]
         public async Task<IActionResult> Create(StudentCreateDto studentCreateDto)
         {
             return Ok(await _studentService.Create(studentCreateDto));
         }
 
-        [Authorize(Roles = "parent")]
+        [Authorize(Roles = "admin, parent")]
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int? id)
         {
@@ -31,21 +31,21 @@ namespace NurseryApp.Api.Controllers
 
         }
 
-        [Authorize(Roles = "parent")]
+        [Authorize(Roles = "admin, parent")]
         [HttpGet]
         public async Task<IActionResult> GetAll(int? parentId)
         {
             return Ok(await _studentService.GetAll(parentId));
         }
 
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "admin,teacher")]
         [HttpGet("teacher")]
         public async Task<IActionResult> GetAllForTeacher(int? groupId, DateTime date)
         {
             return Ok(await _studentService.GetAll(groupId, date));
         }
 
-        [Authorize(Roles = "teacher")]
+        [Authorize(Roles = "admin,teacher")]
         [HttpGet("homework")]
         public async Task<IActionResult> GetAllForTeacher(int? groupId, int? homeWorkId)
         {
@@ -53,14 +53,14 @@ namespace NurseryApp.Api.Controllers
         }
 
 
-        [Authorize(Roles = "parent,teacher")]
+        [Authorize(Roles = "admin, parent")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int? id)
         {
             return Ok(await _studentService.Delete(id));
         }
 
-        [Authorize(Roles = "parent,teacher")]
+        [Authorize(Roles = "admin, parent")]
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromForm] StudentUpdateDto studentUpdateDto)
         {

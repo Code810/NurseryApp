@@ -1,4 +1,5 @@
 using NurseryApp.Api;
+using NurseryApp.Api.Hubs;
 using NurseryApp.Api.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,18 +21,18 @@ if (app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionMiddleware>();
-app.UseCors("AllowAllOrigins");
+app.UseCors("AllowSpecificOrigins");
+
+app.UseRouting();
+app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
-
-app.Run();
-
-// Other middleware
-app.UseRouting();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
+    endpoints.MapHub<ChatHub>("/chathub");
 });
+
+app.Run();
 
 

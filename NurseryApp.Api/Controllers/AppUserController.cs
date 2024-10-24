@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NurseryApp.Application.Dtos.AppUser;
 using NurseryApp.Application.Interfaces;
 
@@ -30,11 +31,21 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpGet("users-by-role")]
+        [Authorize(Roles = "admin")]
+
         public async Task<IActionResult> GetUsersByRole([FromQuery] string? searchText)
         {
             var users = await _appUserService.GetAllByRole(searchText);
             return Ok(users);
         }
+
+        [HttpGet("userschat")]
+        public async Task<IActionResult> GetUsersForChat([FromQuery] string? appUserId, [FromQuery] int? id)
+        {
+            var users = await _appUserService.GetAllByGroup(appUserId, id);
+            return Ok(users);
+        }
+
 
         [HttpPut("update/{id}")]
         public async Task<IActionResult> UpdateUser(string id, [FromBody] AppUserUpdateDto appUserUpdateDto)
@@ -44,6 +55,8 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin")]
+
         public async Task<IActionResult> UpdateUserForAdmin(string id, [FromBody] AppUserUpdateForAdminDto appUserUpdateDto)
         {
             var result = await _appUserService.UpdateForAdmin(id, appUserUpdateDto);
@@ -51,6 +64,8 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPost("change-status/{id}")]
+        [Authorize(Roles = "admin")]
+
         public async Task<IActionResult> ChangeStatus(string id)
         {
             var result = await _appUserService.ChangeStatus(id);
@@ -59,6 +74,8 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "admin")]
+
         public async Task<IActionResult> DeleteUser(string id)
         {
             var result = await _appUserService.Delete(id);

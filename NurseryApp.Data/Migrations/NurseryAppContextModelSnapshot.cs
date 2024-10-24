@@ -357,6 +357,48 @@ namespace NurseryApp.Data.Migrations
                     b.ToTable("Blogs");
                 });
 
+            modelBuilder.Entity("NurseryApp.Core.Entities.ChatMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
+
+                    b.Property<string>("ReceiverAppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("SenderAppUserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReceiverAppUserId");
+
+                    b.HasIndex("SenderAppUserId");
+
+                    b.ToTable("chatMessages");
+                });
+
             modelBuilder.Entity("NurseryApp.Core.Entities.Comment", b =>
                 {
                     b.Property<int>("Id")
@@ -525,6 +567,41 @@ namespace NurseryApp.Data.Migrations
                         .HasFilter("[TeacherId] IS NOT NULL");
 
                     b.ToTable("Groups");
+                });
+
+            modelBuilder.Entity("NurseryApp.Core.Entities.GroupMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .IsRequired()
+                        .HasMaxLength(1000)
+                        .HasColumnType("nvarchar(1000)");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("UpdatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
+
+                    b.ToTable("groupMessages");
                 });
 
             modelBuilder.Entity("NurseryApp.Core.Entities.HomeWork", b =>
@@ -897,6 +974,25 @@ namespace NurseryApp.Data.Migrations
                     b.Navigation("AppUser");
                 });
 
+            modelBuilder.Entity("NurseryApp.Core.Entities.ChatMessage", b =>
+                {
+                    b.HasOne("NurseryApp.Core.Entities.AppUser", "ReceiverAppUser")
+                        .WithMany()
+                        .HasForeignKey("ReceiverAppUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("NurseryApp.Core.Entities.AppUser", "SenderAppUser")
+                        .WithMany()
+                        .HasForeignKey("SenderAppUserId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("ReceiverAppUser");
+
+                    b.Navigation("SenderAppUser");
+                });
+
             modelBuilder.Entity("NurseryApp.Core.Entities.Comment", b =>
                 {
                     b.HasOne("NurseryApp.Core.Entities.AppUser", "AppUser")
@@ -935,6 +1031,17 @@ namespace NurseryApp.Data.Migrations
                         .OnDelete(DeleteBehavior.NoAction);
 
                     b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("NurseryApp.Core.Entities.GroupMessage", b =>
+                {
+                    b.HasOne("NurseryApp.Core.Entities.Group", "Group")
+                        .WithMany("GroupMessages")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
                 });
 
             modelBuilder.Entity("NurseryApp.Core.Entities.HomeWork", b =>
@@ -1043,6 +1150,8 @@ namespace NurseryApp.Data.Migrations
 
             modelBuilder.Entity("NurseryApp.Core.Entities.Group", b =>
                 {
+                    b.Navigation("GroupMessages");
+
                     b.Navigation("HomeWorks");
 
                     b.Navigation("Students");

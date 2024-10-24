@@ -8,5 +8,7 @@ namespace NurseryApp.Application.Interfaces
         Task<ContactReturnDto> Get(int? id);
         Task<int> Delete(int? id);
         Task<ContactListDto> GetAllWithSearch(string? text, int page);
+        Task DeleteMultiple(List<int> ids);
+        Task<int> Update(int? id);
     }
 }

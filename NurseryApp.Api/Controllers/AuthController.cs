@@ -91,21 +91,9 @@ namespace NurseryApp.Api.Controllers
         public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
         {
 
-            try
-            {
+            string token = await _authService.Login(loginDto);
 
-                string token = await _authService.Login(loginDto);
-
-                return Ok(new { Token = token, Message = "Login successful" });
-            }
-            catch (CustomException ex)
-            {
-                return StatusCode(ex.Code, new { Message = ex.Message });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new { Message = "An error occurred during login", Error = ex.Message });
-            }
+            return Ok(new { Token = token, Message = "Login successful" });
         }
 
         [HttpGet("forget-password")]

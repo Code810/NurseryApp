@@ -5,7 +5,6 @@ namespace NurseryApp.Application.Dtos.SettingDto
 {
     public class SettingUpdateDto
     {
-        public string Key { get; set; }
         public string? Value { get; set; }
         public IFormFile? File { get; set; }
     }

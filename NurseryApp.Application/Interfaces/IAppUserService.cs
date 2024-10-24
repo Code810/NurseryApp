@@ -8,6 +8,7 @@ namespace NurseryApp.Application.Interfaces
         Task<AppUserReturnDto> UpdateForAdmin(string? id, AppUserUpdateForAdminDto appUserUpdateDto);
         Task<IEnumerable<AppUserReturnDto>> GetAll(string? text);
         Task<IEnumerable<AppUserReturnDto>> GetAllByRole(string? text);
+        Task<IEnumerable<AppUserReturnDto>> GetAllByGroup(string? appUserId, int? id);
         Task<AppUserReturnDto> Get(string? id);
         Task<int> Delete(string? id);
         Task<int> ChangeStatus(string? id);

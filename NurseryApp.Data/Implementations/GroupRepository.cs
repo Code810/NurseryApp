@@ -49,5 +49,12 @@ namespace NurseryApp.Data.Implementations
             IEnumerable<Group> groups = await query.Skip((page - 1) * 9).Take(9).ToListAsync();
             return groups;
         }
+        public async Task<Group> GetGroupById(int groupId)
+        {
+            return await _context.Groups
+                .Include(g => g.Teacher)
+                .Include(g => g.Students).ThenInclude(s => s.Parent)
+                .FirstOrDefaultAsync(g => g.Id == groupId);
+        }
     }
 }

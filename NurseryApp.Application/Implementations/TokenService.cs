@@ -34,7 +34,7 @@ namespace NurseryApp.Application.Implementations
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 SigningCredentials = credentials,
-                Expires = DateTime.Now.AddMinutes(200),
+                Expires = DateTime.Now.AddDays(2),
                 Subject = ci,
                 Audience = _jwtSetting.Audience,
                 Issuer = _jwtSetting.Issuer,

@@ -24,6 +24,8 @@ namespace NurseryApp.Data.Data
         public DbSet<Settings> settings { get; set; }
         public DbSet<Contact> contacts { get; set; }
         public DbSet<Comment> comments { get; set; }
+        public DbSet<ChatMessage> chatMessages { get; set; }
+        public DbSet<GroupMessage> groupMessages { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

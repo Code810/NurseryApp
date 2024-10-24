@@ -74,13 +74,11 @@ namespace NurseryApp.Application.Implementations
             return settingsDtos;
         }
 
-        public async Task<int> Update(int? id, SettingUpdateDto settingUpdateDto)
+        public async Task<SettingReturnDto> Update(int? id, SettingUpdateDto settingUpdateDto)
         {
             if (id == null) throw new CustomException(400, "Setting ID cannot be null");
             var setting = await _unitOfWork.settingRepository.GetAsync(s => s.Id == id);
             if (setting == null) throw new CustomException(404, "Setting not found");
-            var existSetting = await _unitOfWork.settingRepository.IsExist(s => s.Key == settingUpdateDto.Key && s.Id != id);
-            if (existSetting) throw new CustomException(400, "this key has already been used");
             if (settingUpdateDto.File == null && settingUpdateDto.Value == null)
             {
                 throw new CustomException(400, "value and image cannot be empty at the same time");
@@ -100,7 +98,8 @@ namespace NurseryApp.Application.Implementations
             _mapper.Map(settingUpdateDto, setting);
             _unitOfWork.settingRepository.Update(setting);
             await _unitOfWork.SaveChangesAsync();
-            return setting.Id;
+            var settingDto = _mapper.Map<SettingReturnDto>(setting);
+            return settingDto;
         }
     }
 }

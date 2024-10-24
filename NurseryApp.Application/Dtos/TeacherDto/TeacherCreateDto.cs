@@ -6,10 +6,10 @@ namespace NurseryApp.Application.Dtos.TeacherDto
     public class TeacherCreateDto
     {
         public string AppUserId { get; set; }
-        public string? Instagram { get; set; }
-        public string? Facebook { get; set; }
-        public string? Twitter { get; set; }
-        public string? Linkedin { get; set; }
+        public string Instagram { get; set; }
+        public string Facebook { get; set; }
+        public string Twitter { get; set; }
+        public string Linkedin { get; set; }
         public IFormFile File { get; set; }
     }
     public class TeacherCreateDtoValidator : AbstractValidator<TeacherCreateDto>

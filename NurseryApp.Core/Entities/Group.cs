@@ -12,5 +12,6 @@
         public Teacher Teacher { get; set; }
         public List<HomeWork> HomeWorks { get; set; }
         public List<Student> Students { get; set; }
+        public IEnumerable<GroupMessage> GroupMessages { get; set; }
     }
 }

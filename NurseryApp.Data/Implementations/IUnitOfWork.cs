@@ -18,6 +18,8 @@ namespace NurseryApp.Data.Implementations
         public ISettingRepository settingRepository { get; }
         public IContatctRepository contatctRepository { get; }
         public ICommentRepository commentRepository { get; }
+        public IChatMessageRepository chatMessageRepository { get; }
+        public IGroupMessageRepository groupMessageRepository { get; }
         Task<int> SaveChangesAsync();
         Task BeginTransactionAsync();
         Task CommitTransactionAsync();

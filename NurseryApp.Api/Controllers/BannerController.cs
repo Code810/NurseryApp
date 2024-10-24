@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NurseryApp.Application.Dtos.Banner;
 using NurseryApp.Application.Interfaces;
 
@@ -15,6 +16,7 @@ namespace NurseryApp.Api.Controllers
             _bannerService = bannerService;
         }
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Create(BannerCreateDto bannerCreateDto)
         {
             return Ok(await _bannerService.Create(bannerCreateDto));
@@ -27,6 +29,7 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPut]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Update(BannerUpdateDto bannerUpdateDto)
         {
             return Ok(await _bannerService.Update(bannerUpdateDto));

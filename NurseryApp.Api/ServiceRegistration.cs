@@ -102,7 +102,8 @@ namespace NurseryApp.Api
             services.AddScoped<IContactService, ContactService>();
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<IPaymentService, PaymentService>();
-
+            services.AddScoped<IChatMessageService, ChatMessageService>();
+            services.AddScoped<IGroupMessageService, GroupMessageService>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -149,17 +150,39 @@ namespace NurseryApp.Api
                     //ClockSkew = TimeSpan.Zero
 
                 };
+                x.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        var accessToken = context.Request.Query["access_token"];
+                        var path = context.HttpContext.Request.Path;
+
+                        // Check if the request is for SignalR hub, extract the token from the query string
+                        if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/chathub"))
+                        {
+                            context.Token = accessToken;
+                        }
+                        return Task.CompletedTask;
+                    }
+                };
             });
+
+
+
+
             services.Configure<JwtSetting>(config.GetSection("Jwt"));
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowAllOrigins", policy =>
+                options.AddPolicy("AllowSpecificOrigins", builder =>
                 {
-                    policy.AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader();
+                    builder.WithOrigins("http://localhost:5173")
+                           .AllowAnyHeader()
+                           .AllowAnyMethod()
+                           .AllowCredentials();
                 });
             });
+            services.AddSignalR();
+
         }
     }
 }

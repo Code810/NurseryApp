@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NurseryApp.Application.Dtos.Comment;
 using NurseryApp.Application.Interfaces;
 
@@ -6,6 +7,7 @@ namespace NurseryApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class CommentController : ControllerBase
     {
         private readonly ICommentService _commentService;
@@ -30,6 +32,7 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll(int? blogId)
         {
             return Ok(await _commentService.GetAll(blogId));

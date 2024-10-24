@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NurseryApp.Application.Dtos.SettingDto;
 using NurseryApp.Application.Interfaces;
 
@@ -6,6 +7,7 @@ namespace NurseryApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class SettingsController : ControllerBase
     {
         private readonly ISettingService _settingService;
@@ -16,6 +18,7 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Create([FromForm] SettingCreateDto settingCreateDto)
         {
             var result = await _settingService.Create(settingCreateDto);
@@ -44,10 +47,11 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> Update(int id, [FromForm] SettingUpdateDto settingUpdateDto)
         {
             var result = await _settingService.Update(id, settingUpdateDto);
-            return result > 0 ? Ok(result) : NotFound();
+            return Ok(result);
         }
     }
 }

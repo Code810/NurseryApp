@@ -84,7 +84,6 @@ namespace NurseryApp.Application.Implementations
             if (users.Count() <= 0) throw new CustomException(400, "Empty User list");
             var userDtos = _mapper.Map<IEnumerable<AppUserReturnDto>>(users);
 
-            // Fetch and assign roles for each user
             foreach (var user in userDtos)
             {
                 var appUser = users.FirstOrDefault(u => u.Id == user.Id);
@@ -138,6 +137,71 @@ namespace NurseryApp.Application.Implementations
 
             return result;
         }
+
+
+        public async Task<IEnumerable<AppUserReturnDto>> GetAllByGroup(string? appUserId, int? id)
+        {
+            if (appUserId == null) throw new CustomException(400, "user id not sent");
+            var existUser = await _userManager.FindByIdAsync(appUserId);
+            if (existUser == null) throw new CustomException(400, "user not found");
+            var roles = await _userManager.GetRolesAsync(existUser);
+            var users = new List<AppUser>();
+            var listUsers = await _userManager.GetUsersInRoleAsync("admin");
+            if (listUsers.Any())
+            {
+                users.AddRange(listUsers);
+            }
+            Group existGroup;
+            if (roles.Contains("parent") && id != null)
+            {
+                var existStudent = await _unitOfWork.studentRepository.GetByWithIncludesAsync(s => s.Id == id, s => s.Group);
+                if (existStudent == null) throw new CustomException(404, "student not found");
+                existGroup = await _unitOfWork.groupRepository.GetGroupById(existStudent.GroupId.Value);
+            }
+            else
+            {
+                existGroup = await _unitOfWork.groupRepository.GetGroupById(id.Value);
+            }
+
+            if (existGroup == null)
+            {
+                throw new CustomException(404, "Group not found");
+            }
+            var teacherAppUserId = existGroup.Teacher?.AppUserId;
+            if (teacherAppUserId != null)
+            {
+                var teacher = await _userManager.FindByIdAsync(teacherAppUserId);
+                if (teacher != null)
+                {
+                    users.Add(teacher);
+                }
+            }
+            var parentAppUserIds = existGroup.Students.Select(s => s.Parent.AppUserId).Distinct().ToList();
+            if (parentAppUserIds.Any())
+            {
+                foreach (var parentId in parentAppUserIds)
+                {
+                    var parent = await _userManager.FindByIdAsync(parentId);
+                    if (parent != null)
+                    {
+                        users.Add(parent);
+                    }
+                }
+            }
+
+            users = users.Where(u => u.Id != appUserId).ToList();
+
+            var result = _mapper.Map<IEnumerable<AppUserReturnDto>>(users);
+            foreach (var user in result)
+            {
+                var appUser = users.FirstOrDefault(u => u.Id == user.Id);
+                user.Roles = (await _userManager.GetRolesAsync(appUser)).ToList();
+            }
+
+            return result;
+        }
+
+
 
 
         public async Task<int> Update(string? id, AppUserUpdateDto appUserUpdateDto)

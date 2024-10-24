@@ -98,6 +98,7 @@ namespace NurseryApp.Application.Implementations
             }
             var result = await _userManager.CheckPasswordAsync(existUser, loginDto.Password);
             if (!result) throw new CustomException(401, "User or Pasword wrong");
+            if (!existUser.EmailConfirmed) throw new CustomException(401, "Please confirm email");
             var roles = await _userManager.GetRolesAsync(existUser);
             return _tokenService.GetToken(existUser, roles);
 

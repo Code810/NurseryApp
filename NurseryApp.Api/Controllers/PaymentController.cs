@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NurseryApp.Application.Dtos.PaymentDtos;
 using NurseryApp.Application.Interfaces;
 
@@ -16,6 +17,7 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPost("create-payment-intent")]
+        [Authorize(Roles = "parent")]
         public async Task<IActionResult> CreatePaymentIntent([FromBody] PaymentRequestDto paymentRequest)
         {
             var paymentIntent = await _paymentService.CreatePaymentIntent(paymentRequest.Amount, paymentRequest.Currency);

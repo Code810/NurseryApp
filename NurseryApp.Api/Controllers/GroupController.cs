@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NurseryApp.Application.Dtos.GroupDto;
 using NurseryApp.Application.Interfaces;
 
@@ -6,6 +7,7 @@ namespace NurseryApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "admin")]
     public class GroupController : ControllerBase
     {
         private readonly IGroupService _groupService;
@@ -22,6 +24,7 @@ namespace NurseryApp.Api.Controllers
             return Ok(await _groupService.Create(groupCreateDto));
         }
         [HttpGet("{value}")]
+        [AllowAnonymous]
         public async Task<IActionResult> Get(string value)
         {
             if (int.TryParse(value, out int id))
@@ -35,6 +38,7 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpGet("all")]
+        [AllowAnonymous]
         public async Task<IActionResult> GetAll([FromQuery] int? count, [FromQuery] string? text, [FromQuery] int page = 1)
         {
             if (!string.IsNullOrEmpty(text) || count == null)

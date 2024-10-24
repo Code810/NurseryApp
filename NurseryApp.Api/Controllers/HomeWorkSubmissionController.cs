@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NurseryApp.Application.Dtos.HomeWorkSubmission;
 using NurseryApp.Application.Interfaces;
 
@@ -6,6 +7,7 @@ namespace NurseryApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HomeWorkSubmissionController : ControllerBase
     {
         private readonly IHomeWorkSubmissionService _homeWorkSubmissionService;
@@ -16,6 +18,7 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "teacher")]
         public async Task<IActionResult> Create(HomeWorkSubmissionCreateDto homeWorkSubmissionCreateDto)
         {
             return Ok(await _homeWorkSubmissionService.Create(homeWorkSubmissionCreateDto));
@@ -29,6 +32,7 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> GetAll()
         {
             return Ok(await _homeWorkSubmissionService.GetAll());
@@ -41,12 +45,14 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "teacher")]
         public async Task<IActionResult> Update(int? id, HomeWorkSubmissionUpdateDto homeWorkSubmissionUpdateDto)
         {
             return Ok(await _homeWorkSubmissionService.Update(id, homeWorkSubmissionUpdateDto));
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "teacher")]
         public async Task<IActionResult> Delete(int? id)
         {
             return Ok(await _homeWorkSubmissionService.Delete(id));

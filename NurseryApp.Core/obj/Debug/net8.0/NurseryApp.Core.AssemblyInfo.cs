@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NurseryApp.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+05fdbcf65489af794a2ff97aab8c3eefb8b0889f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+aa1078f4408b40822fb4fd1068f513b2a6406b4a")]
 [assembly: System.Reflection.AssemblyProductAttribute("NurseryApp.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NurseryApp.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

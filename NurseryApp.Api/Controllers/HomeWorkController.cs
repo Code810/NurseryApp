@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NurseryApp.Application.Dtos.HomeWork;
 using NurseryApp.Application.Interfaces;
 
@@ -6,6 +7,7 @@ namespace NurseryApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class HomeWorkController : ControllerBase
     {
         private readonly IHomeWorkService _homeWorkService;
@@ -16,6 +18,7 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "teacher")]
         public async Task<IActionResult> Create(HomeWorkCreateDto homeWorkCreateDto)
         {
 
@@ -41,12 +44,14 @@ namespace NurseryApp.Api.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Roles = "teacher")]
         public async Task<IActionResult> Update(int? id, HomeWorkUpdateDto homeWorkUpdateDto)
         {
             return Ok(await _homeWorkService.Update(id, homeWorkUpdateDto));
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Roles = "teacher")]
         public async Task<IActionResult> Delete(int? id)
         {
             return Ok(await _homeWorkService.Delete(id));

@@ -108,8 +108,8 @@ namespace NurseryApp.Application.Implementations
                     f => f.Student
                 );
             }
-
-            return _mapper.Map<IEnumerable<FeeReturnDto>>(fees);
+            var feeDtos = _mapper.Map<IEnumerable<FeeReturnDto>>(fees);
+            return feeDtos.OrderByDescending(f => f.PaidDate);
         }
 
 
