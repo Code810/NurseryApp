@@ -1,6 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using NurseryApp.Api;
 using NurseryApp.Api.Hubs;
 using NurseryApp.Api.Middlewares;
+using NurseryApp.Data.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +19,14 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
     app.UseDeveloperExceptionPage();
+}
+else
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<NurseryAppContext>();
+        dbContext.Database.Migrate();
+    }
 }
 
 app.UseHealthChecks("/healthy");
