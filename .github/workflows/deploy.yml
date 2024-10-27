@@ -46,3 +46,6 @@ jobs:
 
       - name: Remove unused Docker images
         run: docker image prune -f
+
+      - name: Run migrations
+        run: dotnet ef database update --startup-project NurseryApp.Api --project NurseryApp.Data
