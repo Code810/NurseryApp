@@ -33,7 +33,7 @@ else
         catch (Exception ex)
         {
             var emailservice = scope.ServiceProvider.GetRequiredService<IEmailService>();
-            emailservice.SendEmail($"{ex.Message} - {ex.InnerException.Message}", new List<string> { "javidshirinbayli@gmail.com" }, "", "");
+            emailservice.SendEmail($"{ex.Message} - {ex.InnerException?.Message}", new List<string> { "javidshirinbayli@gmail.com" }, "", "");
 
             throw ex;
         }
