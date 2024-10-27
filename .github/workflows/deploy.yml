@@ -25,6 +25,9 @@ jobs:
   build:
     runs-on: self-hosted
 
+    env:
+      ASPNETCORE_ENVIRONMENT: 'Production'
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
