@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using NurseryApp.Api;
 using NurseryApp.Api.Hubs;
 using NurseryApp.Api.Middlewares;
+using NurseryApp.Application.Interfaces;
 using NurseryApp.Data.Data;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -24,8 +25,18 @@ else
 {
     using (var scope = app.Services.CreateScope())
     {
-        var dbContext = scope.ServiceProvider.GetRequiredService<NurseryAppContext>();
-        dbContext.Database.Migrate();
+        try
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<NurseryAppContext>();
+            dbContext.Database.Migrate();
+        }
+        catch (Exception ex)
+        {
+            var emailservice = scope.ServiceProvider.GetRequiredService<IEmailService>();
+            emailservice.SendEmail($"{ex.Message} - {ex.InnerException.Message}", new List<string> { "javidshirinbayli@gmail.com" }, "", "");
+
+            throw ex;
+        }
     }
 }
 
