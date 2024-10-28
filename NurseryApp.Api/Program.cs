@@ -23,7 +23,8 @@ app.UseHealthChecks("/healthy");
 app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionMiddleware>();
-app.UseCors("AllowSpecificOrigins");
+
+app.UseCors("AllowAllOrigins");
 
 app.UseRouting();
 app.UseAuthentication();
