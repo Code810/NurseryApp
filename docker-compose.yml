@@ -9,8 +9,6 @@ services:
       - "8270:8080"
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-    volumes:
-      - wwwroot_data:/app/wwwroot
     depends_on:
       - nursery.database
 
@@ -26,5 +24,4 @@ services:
       - mssql_data:/var/opt/mssql
 
 volumes:
-  wwwroot_data:
   mssql_data:
