@@ -35,7 +35,7 @@ COPY --from=publish /app/publish .
 RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
 
 # Create the wwwroot directory and set permissions
-RUN mkdir -p /app/wwwroot && chown -R appuser:appgroup /app/wwwroot
+RUN mkdir -p /app/wwwroot && chown -R 755 appuser:appgroup /app/wwwroot
 
 # Set ownership of the app directory
 RUN chown -R appuser:appgroup /app
