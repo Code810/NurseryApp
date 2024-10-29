@@ -9,9 +9,8 @@ services:
       - "8270:8080"
     environment:
       ASPNETCORE_ENVIRONMENT: Production
-      # Add any additional environment variables here
-    # volumes:
-    #   - ./wwwroot/images:/app/wwwroot/images  
+    volumes:
+      - wwwroot_data:/app/wwwroot/images  
     depends_on:
       - nursery.database
 
@@ -27,5 +26,5 @@ services:
       - mssql_data:/var/opt/mssql
 
 volumes:
-  # wwwroot_data:
+  wwwroot_data:
   mssql_data:
