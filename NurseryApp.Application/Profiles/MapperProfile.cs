@@ -150,9 +150,9 @@ namespace NurseryApp.Application.Profiles
               .ForMember(b => b.BottomFileName, map => map.MapFrom(d => d.BottomFile.Save(Directory.GetCurrentDirectory(), "images/banner")));
 
             CreateMap<Banner, BannerReturnDto>()
-                .ForMember(d => d.LeftFileName, map => map.MapFrom(B => url + "images/banner/" + B.LeftFileName))
-                .ForMember(d => d.RightFileName, map => map.MapFrom(B => url + "images/banner/" + B.RightFileName))
-                .ForMember(d => d.BottomFileName, map => map.MapFrom(B => url + "images/banner/" + B.BottomFileName));
+                .ForMember(d => d.LeftFileName, map => map.MapFrom(B => $"{url}/images/banner/{B.LeftFileName}"))
+                .ForMember(d => d.RightFileName, map => map.MapFrom(B => $"{url}/images/banner/{B.RightFileName}"))
+                .ForMember(d => d.BottomFileName, map => map.MapFrom(B => $"{url}/images/banner/{B.BottomFileName}"));
 
 
             CreateMap<BannerUpdateDto, Banner>()
