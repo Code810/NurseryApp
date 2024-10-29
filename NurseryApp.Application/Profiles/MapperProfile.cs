@@ -174,7 +174,7 @@ namespace NurseryApp.Application.Profiles
            }
            else if (src.File != null && src.Value == null)
            {
-               var fileName = src.File.Save(Directory.GetCurrentDirectory(), "/images/settings");
+               var fileName = src.File.Save(Directory.GetCurrentDirectory(), "images/settings");
                return fileName;
            }
            return dest.Value;
