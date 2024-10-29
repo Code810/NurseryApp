@@ -25,12 +25,14 @@ namespace NurseryApp.Application.Profiles
         public MapperProfile(IHttpContextAccessor contextAccessor)
         {
             _contextAccessor = contextAccessor;
+            var request = _contextAccessor.HttpContext.Request;
+            int port = request.Host.Port ?? (request.Scheme == "https" ? 443 : 80);
             var urlBuilder = new UriBuilder(
-                _contextAccessor.HttpContext.Request.Scheme,
-                _contextAccessor.HttpContext.Request.Host.Host,
-                _contextAccessor.HttpContext.Request.Host.Port.Value
-                );
-            var url = urlBuilder.Uri.AbsoluteUri;
+                request.Scheme,
+                request.Host.Host,
+                port
+            );
+            var url = urlBuilder.Uri.GetLeftPart(UriPartial.Authority);
             //AttenDance
             CreateMap<AttenDanceCreateDto, AttenDance>();
             CreateMap<AttenDance, AttenDanceReturnDto>();
