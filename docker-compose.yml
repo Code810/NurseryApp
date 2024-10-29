@@ -11,7 +11,7 @@ services:
       ASPNETCORE_ENVIRONMENT: Production
       # Add any additional environment variables here
     volumes:
-     - ./wwwroot/images:/app/wwwroot/images
+      - wwwroot_data:/app/wwwroot  
     depends_on:
       - nursery.database
 
