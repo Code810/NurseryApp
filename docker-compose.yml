@@ -10,7 +10,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
     volumes:
-      - wwwroot_data:/app/wwwroot
+      - wwwroot_data:/wwwroot
     depends_on:
       - nursery.database
 
