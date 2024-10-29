@@ -63,15 +63,7 @@ namespace NurseryApp.Api
                 //options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
                 options.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<NurseryAppContext>().AddDefaultTokenProviders();
-            services.AddCors(options =>
-            {
-                options.AddPolicy("AllowAllOrigins", policy =>
-                {
-                    policy.AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader();
-                });
-            });
+
 
             services.AddScoped<IAttenDanceRepository, AttenDanceRepository>();
             services.AddScoped<IFeeRepository, FeeRepository>();
@@ -171,14 +163,23 @@ namespace NurseryApp.Api
 
 
             services.Configure<JwtSetting>(config.GetSection("Jwt"));
+
             services.AddCors(options =>
             {
+                var frontEndUrl = config["FrontEndUrl"];
+
                 options.AddPolicy("AllowSpecificOrigins", builder =>
                 {
-                    builder.WithOrigins("http://localhost:5173")
+                    builder.WithOrigins(frontEndUrl!)
                            .AllowAnyHeader()
                            .AllowAnyMethod()
                            .AllowCredentials();
+                });
+                options.AddPolicy("AllowAllOrigins", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
                 });
             });
             services.AddSignalR();
