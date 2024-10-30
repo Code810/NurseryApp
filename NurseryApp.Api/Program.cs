@@ -24,7 +24,7 @@ app.UseHealthChecks("/healthy");
 app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionMiddleware>();
-
+//asdad
 //app.UseCors("AllowAllOrigins");
 app.UseCors("AllowSpecificOrigins");
 
