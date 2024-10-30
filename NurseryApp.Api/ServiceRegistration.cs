@@ -161,7 +161,7 @@ namespace NurseryApp.Api
 
 
 
-
+            //test
             services.Configure<JwtSetting>(config.GetSection("Jwt"));
 
             services.AddCors(options =>
