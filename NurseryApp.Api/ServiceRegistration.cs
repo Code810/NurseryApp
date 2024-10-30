@@ -175,12 +175,12 @@ namespace NurseryApp.Api
                            .AllowAnyMethod()
                            .AllowCredentials();
                 });
-                options.AddPolicy("AllowAllOrigins", policy =>
-                {
-                    policy.AllowAnyOrigin()
-                          .AllowAnyMethod()
-                          .AllowAnyHeader();
-                });
+                //options.AddPolicy("AllowAllOrigins", policy =>
+                //{
+                //    policy.AllowAnyOrigin()
+                //          .AllowAnyMethod()
+                //          .AllowAnyHeader();
+                //});
             });
             services.AddSignalR();
             services.AddHealthChecks();
