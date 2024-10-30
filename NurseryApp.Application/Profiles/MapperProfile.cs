@@ -66,7 +66,7 @@ namespace NurseryApp.Application.Profiles
 
             //Student
             CreateMap<StudentCreateDto, Student>()
-              .ForMember(s => s.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "/images/student")));
+              .ForMember(s => s.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/student")));
             CreateMap<Student, StudentReturnDto>()
       .ForMember(d => d.FileName, map => map.MapFrom(s => url + "/images/student/" + s.FileName))
       .ForMember(d => d.Fees, map => map.MapFrom(b => b.Fees.OrderByDescending(f => f.DueDate)))
@@ -82,7 +82,7 @@ namespace NurseryApp.Application.Profiles
     {
         if (src.File != null)
         {
-            return src.File.Save(Directory.GetCurrentDirectory(), "/images/student");
+            return src.File.Save(Directory.GetCurrentDirectory(), "images/student");
         }
         return dest.FileName;
     }))
@@ -95,14 +95,14 @@ namespace NurseryApp.Application.Profiles
 
             //Teacher
             CreateMap<TeacherCreateDto, Teacher>()
-              .ForMember(t => t.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "/images/teacher")));
+              .ForMember(t => t.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/teacher")));
             CreateMap<Teacher, TeacherReturnDto>().ForMember(d => d.FileName, map => map.MapFrom(t => url + "/images/teacher/" + t.FileName));
             CreateMap<TeacherUpdateDto, Teacher>()
              .ForMember(s => s.FileName, opt => opt.MapFrom((src, dest) =>
              {
                  if (src.File != null)
                  {
-                     return src.File.Save(Directory.GetCurrentDirectory(), "/images/teacher");
+                     return src.File.Save(Directory.GetCurrentDirectory(), "images/teacher");
                  }
                  return dest.FileName;
              }))
@@ -121,7 +121,7 @@ namespace NurseryApp.Application.Profiles
 
             //Blog
             CreateMap<BlogCreateDto, Blog>()
-              .ForMember(b => b.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "/images/blogs")));
+              .ForMember(b => b.FileName, map => map.MapFrom(d => d.File.Save(Directory.GetCurrentDirectory(), "images/blogs")));
 
             CreateMap<Blog, BlogReturnDto>()
     .ForMember(d => d.FileName, map => map.MapFrom(b => url + "/images/blogs/" + b.FileName))
@@ -132,7 +132,7 @@ namespace NurseryApp.Application.Profiles
             {
                 if (src.File != null)
                 {
-                    return src.File.Save(Directory.GetCurrentDirectory(), "/images/blogs");
+                    return src.File.Save(Directory.GetCurrentDirectory(), "images/blogs");
                 }
                 return dest.FileName;
             }));
@@ -145,9 +145,9 @@ namespace NurseryApp.Application.Profiles
 
             //Banner
             CreateMap<BannerCreateDto, Banner>()
-              .ForMember(b => b.LeftFileName, map => map.MapFrom(d => d.LeftFile.Save(Directory.GetCurrentDirectory(), "/images/banner")))
-              .ForMember(b => b.RightFileName, map => map.MapFrom(d => d.RightFile.Save(Directory.GetCurrentDirectory(), "/images/banner")))
-              .ForMember(b => b.BottomFileName, map => map.MapFrom(d => d.BottomFile.Save(Directory.GetCurrentDirectory(), "/images/banner")));
+              .ForMember(b => b.LeftFileName, map => map.MapFrom(d => d.LeftFile.Save(Directory.GetCurrentDirectory(), "images/banner")))
+              .ForMember(b => b.RightFileName, map => map.MapFrom(d => d.RightFile.Save(Directory.GetCurrentDirectory(), "images/banner")))
+              .ForMember(b => b.BottomFileName, map => map.MapFrom(d => d.BottomFile.Save(Directory.GetCurrentDirectory(), "images/banner")));
 
             CreateMap<Banner, BannerReturnDto>()
                 .ForMember(d => d.LeftFileName, map => map.MapFrom(B => $"{url}/images/banner/{B.LeftFileName}"))
@@ -156,9 +156,9 @@ namespace NurseryApp.Application.Profiles
 
 
             CreateMap<BannerUpdateDto, Banner>()
-             .ForMember(b => b.LeftFileName, map => map.MapFrom(d => d.LeftFile.Save(Directory.GetCurrentDirectory(), "/images/banner")))
-             .ForMember(b => b.RightFileName, map => map.MapFrom(d => d.RightFile.Save(Directory.GetCurrentDirectory(), "/images/banner")))
-             .ForMember(b => b.BottomFileName, map => map.MapFrom(d => d.BottomFile.Save(Directory.GetCurrentDirectory(), "/images/banner")));
+             .ForMember(b => b.LeftFileName, map => map.MapFrom(d => d.LeftFile.Save(Directory.GetCurrentDirectory(), "images/banner")))
+             .ForMember(b => b.RightFileName, map => map.MapFrom(d => d.RightFile.Save(Directory.GetCurrentDirectory(), "images/banner")))
+             .ForMember(b => b.BottomFileName, map => map.MapFrom(d => d.BottomFile.Save(Directory.GetCurrentDirectory(), "images/banner")));
 
             //Contact
             CreateMap<ContactCreateDto, Contact>();
