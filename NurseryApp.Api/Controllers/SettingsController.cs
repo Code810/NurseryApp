@@ -7,7 +7,6 @@ namespace NurseryApp.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
     public class SettingsController : ControllerBase
     {
         private readonly ISettingService _settingService;

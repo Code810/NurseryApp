@@ -170,17 +170,17 @@ namespace NurseryApp.Api
 
                 options.AddPolicy("AllowSpecificOrigins", builder =>
                 {
-                    builder.WithOrigins(frontEndUrl!)
+                    builder.WithOrigins("https://nursery-app-front-vm57.vercel.app")
                            .AllowAnyHeader()
                            .AllowAnyMethod()
                            .AllowCredentials();
                 });
-                //options.AddPolicy("AllowAllOrigins", policy =>
-                //{
-                //    policy.AllowAnyOrigin()
-                //          .AllowAnyMethod()
-                //          .AllowAnyHeader();
-                //});
+                options.AddPolicy("AllowAllOrigins", policy =>
+                {
+                    policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                });
             });
             services.AddSignalR();
             services.AddHealthChecks();
