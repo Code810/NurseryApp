@@ -185,8 +185,7 @@ namespace NurseryApp.Api
                 {
                     builder.AllowAnyOrigin()
                            .AllowAnyHeader()
-                           .AllowAnyMethod()
-                           .AllowCredentials();
+                           .AllowAnyMethod();
                 });
             });
             services.AddSignalR();
