@@ -35,7 +35,7 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
-    endpoints.MapHub<ChatHub>("/chathub").RequireCors("DefaultPolicy");
+    endpoints.MapHub<ChatHub>("/chathub").RequireCors();
 });
 
 app.Run();
