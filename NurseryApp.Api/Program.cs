@@ -26,7 +26,8 @@ app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionMiddleware>();
 
 //app.UseCors("AllowAllOrigins");
-app.UseCors("AllowSpecificOrigins");
+//app.UseCors("AllowSpecificOrigins");
+app.UseCors();
 
 app.UseRouting();
 app.UseAuthentication();

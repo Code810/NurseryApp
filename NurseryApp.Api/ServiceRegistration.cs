@@ -167,19 +167,27 @@ namespace NurseryApp.Api
             {
                 var frontEndUrl = config["FrontEndUrl"];
 
-                options.AddPolicy("AllowSpecificOrigins", builder =>
-                {
-                    builder.WithOrigins("https://nursery-app-front-vm57.vercel.app")
-                           .AllowAnyHeader()
-                           .AllowAnyMethod()
-                           .AllowCredentials();
-                });
+                //options.AddPolicy("AllowSpecificOrigins", builder =>
+                //{
+                //    builder.WithOrigins(frontEndUrl)
+                //           .AllowAnyHeader()
+                //           .AllowAnyMethod()
+                //           .AllowCredentials();
+                //});
                 //options.AddPolicy("AllowAllOrigins", policy =>
                 //{
                 //    policy.AllowAnyOrigin()
                 //          .AllowAnyMethod()
                 //          .AllowAnyHeader();
                 //});
+
+                options.AddDefaultPolicy(builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyHeader()
+                           .AllowAnyMethod()
+                           .AllowCredentials();
+                });
             });
             services.AddSignalR();
             services.AddHealthChecks();
