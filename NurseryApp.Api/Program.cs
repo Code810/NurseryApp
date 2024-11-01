@@ -25,8 +25,6 @@ app.UseStaticFiles();
 app.UseHttpsRedirection();
 app.UseMiddleware<ExceptionMiddleware>();
 
-//app.UseCors("AllowAllOrigins");
-//app.UseCors("AllowSpecificOrigins");
 app.UseCors();
 
 app.UseRouting();
@@ -36,7 +34,7 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
-    endpoints.MapHub<ChatHub>("/chathub");
+    endpoints.MapHub<ChatHub>("/chathub").RequireCors("DefaultPolicy");
 });
 
 app.Run();

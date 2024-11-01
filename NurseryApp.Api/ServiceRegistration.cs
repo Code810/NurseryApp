@@ -167,25 +167,12 @@ namespace NurseryApp.Api
             {
                 var frontEndUrl = config["FrontEndUrl"];
 
-                //options.AddPolicy("AllowSpecificOrigins", builder =>
-                //{
-                //    builder.WithOrigins(frontEndUrl)
-                //           .AllowAnyHeader()
-                //           .AllowAnyMethod()
-                //           .AllowCredentials();
-                //});
-                //options.AddPolicy("AllowAllOrigins", policy =>
-                //{
-                //    policy.AllowAnyOrigin()
-                //          .AllowAnyMethod()
-                //          .AllowAnyHeader();
-                //});
-
                 options.AddDefaultPolicy(builder =>
                 {
-                    builder.AllowAnyOrigin()
+                    builder.WithOrigins([frontEndUrl, "http://localhost:5173"])
                            .AllowAnyHeader()
-                           .AllowAnyMethod();
+                           .AllowAnyMethod()
+                           .AllowCredentials();
                 });
             });
             services.AddSignalR();
